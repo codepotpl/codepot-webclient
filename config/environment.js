@@ -52,5 +52,7 @@ module.exports = function(environment) {
 
   }
 
+  ENV.API_HOST = process.env.API_HOST || 'http://192.168.59.103:8080/';
+
   return ENV;
 };

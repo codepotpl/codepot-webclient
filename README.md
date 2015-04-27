@@ -6,6 +6,6 @@ Codepot registration web client app.
 
 # Build On Staging/Production
 1. `docker build --tag codepot-webclient .`
-2. ``docker run -v `pwd`/dist:/app/dist codepot-webclient``
+2. ``docker run -v `pwd`/dist:/app/dist -e API_HOST=http://0.0.0.0:1337 codepot-webclient``
 
 The compiled version of the app will be placed in ```pwd`/dist``. Serve it with eg. nginx. 

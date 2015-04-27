@@ -1,7 +1,6 @@
 import Ember from "ember";
-import showLoadingIndicator from '../utils/show-loading-indicator.js'
-import cdptRequest from '../utils/cdpt-request.js'
-import upsert from '../utils/upsert.js'
+import showLoadingIndicator from '../utils/show-loading-indicator.js';
+import cdptRequest from '../utils/cdpt-request.js';
 
 export default Ember.Route.extend({
   beforeModel: function (transition, queryParams) {
@@ -49,7 +48,7 @@ export default Ember.Route.extend({
         })
         .fail(function (error) {
           if (error.responseJSON.code === 100) {
-            route.controller.showEmailAddressAlreadyTakenError()
+            route.controller.showEmailAddressAlreadyTakenError();
           }
         })
         .always(function () {

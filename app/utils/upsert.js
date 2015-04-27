@@ -1,5 +1,3 @@
-import Ember from 'ember';
-
 export default function upsert(store, modelName, data) {
   var item = store.getById(modelName, data.id);
   if (item) {
@@ -8,5 +6,4 @@ export default function upsert(store, modelName, data) {
     item = store.createRecord(modelName, data);
   }
   return item;
-};
-
+}

@@ -13,5 +13,6 @@ RUN ["node_modules/.bin/bower", "install", "--allow-root"]
 
 ADD . /app
 
-#CMD ["node_modules/ember-cli/bin/ember", "build", "--environment"] production
-CMD ["node_modules/.bin/ember", "build"]
+ENV ENVIRONMENT=production
+# no JSON notation here due to $ENVIRONMENT variable ;/
+CMD node_modules/.bin/ember build --environment $ENVIRONMENT

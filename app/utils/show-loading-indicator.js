@@ -5,4 +5,4 @@ export default function showLoadingIndicator(show) {
   } else {
     indicator.addClass('hidden');
   }
-};
+}
