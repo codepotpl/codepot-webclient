@@ -1,6 +1,6 @@
 import Ember from 'ember';
-import showLoadingIndicator from '../utils/show-loading-indicator.js';
-import cdptRequest from '../utils/cdpt-request.js';
+import showLoadingIndicator from '../utils/show-loading-indicator';
+import cdptRequest from '../utils/cdpt-request';
 
 export default Ember.Route.extend({
   beforeModel: function (transition, queryParams) {
