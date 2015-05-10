@@ -24,7 +24,7 @@ export default Ember.Route.extend({
           route.transitionTo('dashboard');
         })
         .fail(function (error) {
-          if (error.status === 401) {
+          if (error.status === 409) {
             route.controller.showFailedToSignInError();
           }
         })
