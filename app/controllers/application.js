@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import upsert from '../utils/upsert.js';
+import upsert from '../utils/upsert';
 
 export default Ember.Controller.extend({
   userData: null,
