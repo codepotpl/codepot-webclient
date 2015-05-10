@@ -1,4 +1,4 @@
-import Ember from "ember";
+import Ember from 'ember';
 import showLoadingIndicator from '../utils/show-loading-indicator.js';
 import cdptRequest from '../utils/cdpt-request.js';
 
