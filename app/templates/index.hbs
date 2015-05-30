@@ -2,11 +2,30 @@
     <div class="small-12 medium-6 columns">
         <h1>Welcome to Codepot registration app!</h1>
 
-        <h2>Please register to leave your e-mail address. Soon we well inform you when you can buy tickets for our event.</h2>
+        <h2>Please register to leave your e-mail address. Soon we well inform you when you can buy tickets for our
+            event.</h2>
     </div>
 
     <div class="small-12 medium-6 columns">
-        <h2>Sign In</h2>
+        <h2>Register</h2>
+
+        <form  {{action "signUp" on="submit"}}>
+          {{input value=signUpFirstName type='text' placeholder='First Name'}}
+          {{input value=signUpLastName type='text' placeholder='Last Name'}}
+            <div>
+              {{input value=signUpEmail id='sign-up-email-input' type='email' placeholder='E-Mail Address' focus-out='onSignUpEmailFocusOut'}}
+                <small class="error hidden">Valid e-mail address required.</small>
+                <small id="email-taken-error" class="error hidden">Given e-mail address is already taken.</small>
+            </div>
+          {{input value=signUpPassword type='password' placeholder='Password'}}
+          <span class="hint">
+              By registering you approve our {{#link-to 'terms-of-service'}}terms of service{{/link-to}}.
+          </span>
+            <button {{bind-attr disabled=signUpButtonDisabled}}>REGISTER</button>
+        </form>
+
+        <h2>Or Sign In</h2>
+
         <form {{action "signIn" on="submit"}}>
             <div>
               {{input value=signInEmail id='sign-in-email-input' type='email' placeholder='E-Mail Address' focus-out='onSignInEmailFocusOut'}}
@@ -18,21 +37,14 @@
             </div>
             <button {{bind-attr disabled=signInButtonDisabled}}>SIGN IN</button>
         </form>
-    </div>
 
-    <div class="small-12 medium-6 columns">
-        <h2>Or Register</h2>
-        <form  {{action "signUp" on="submit"}}>
-          {{input value=signUpFirstName type='text' placeholder='First Name'}}
-          {{input value=signUpLastName type='text' placeholder='Last Name'}}
-            <div>
-              {{input value=signUpEmail id='sign-up-email-input' type='email' placeholder='E-Mail Address' focus-out='onSignUpEmailFocusOut'}}
-                <small class="error hidden">Valid e-mail address required.</small>
-                <small id="email-taken-error" class="error hidden">Given e-mail address is already taken.</small>
-            </div>
-          {{input value=signUpPassword type='password' placeholder='Password'}}
-            <button {{bind-attr disabled=signUpButtonDisabled}}>REGISTER</button>
-        </form>
+        <h2>More...</h2>
+
+        <p>Hey! I want to buy multiple tickets for my company.</p>
+
+        <p>Hey! I want to get discount for my community group!</p>
+
+        <p>No problem. Just write an e-mail to: <a href="tickets@codepot.pl">tickets@codepot.pl</a></p>
     </div>
 </div>
 
