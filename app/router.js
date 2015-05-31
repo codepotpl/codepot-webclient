@@ -8,4 +8,5 @@ var Router = Ember.Router.extend({
 export default Router.map(function() {
   this.route('terms-of-service');
   this.route('dashboard');
+  this.route('buy-ticket');
 });

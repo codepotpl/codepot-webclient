@@ -20,6 +20,9 @@ export default Ember.Controller.extend({
       user: userData ? upsert(this.store, 'user', userData) : null,
       token: token
     });
+    if (token) {
+      EmberENV.AUTHORIZATION_TOKEN = token;
+    }
   },
 
   isUserSingnedIn : function() {

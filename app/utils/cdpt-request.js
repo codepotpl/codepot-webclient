@@ -7,7 +7,12 @@ export default function cdptRequest(url, method, data) {
     type: method,
     data: JSON.stringify(data),
     contentType: 'application/json',
-    dataType: 'json'
+    dataType: 'json',
+    beforeSend : function(xhr) {
+      if (EmberENV.AUTHORIZATION_TOKEN) {
+        xhr.setRequestHeader('Authorization', 'Token ' + EmberENV.AUTHORIZATION_TOKEN);
+      }
+    }
   }).fail(function (error) {
     console.error(error);
   });

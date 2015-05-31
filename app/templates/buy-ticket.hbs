@@ -1,0 +1,38 @@
+<div class="row">
+    <div class="small-12 medium-6 medium-centered columns">
+        <form {{action 'createPurchase' on='submit'}}>
+            <h1>Hello {{firstName}}</h1>
+
+            <p>
+                To sign up for our conference you need to buy a ticket. Please note that prices will get higher in time.
+            </p>
+
+            <p>
+                If you have a promo code please paste it below.
+            </p>
+            {{input value=promoCode type='text' placeholder='Your Promo Code' maxlength=6}}
+
+            <p>Current ticket price (ex. VAT): {{currentPricing.bothDaysNet}} PLN</p>
+            {{#if promoCodeInfo}}
+                <p>Discount: {{promoCodeInfo.discount}}%</p>
+
+                <p>Total price (ex. VAT): {{priceAfterDiscount}} PLN</p>
+            {{/if}}
+
+            {{#if showInvoiceForm}}
+                <h2>Invoice Data</h2>
+                {{input value=name type='text' placeholder='Name'}}
+                {{input value=street type='text' placeholder='Street'}}
+                <label>Format: 00-000
+                    {{input value=zipCode type='text' placeholder='ZIP Code'}}
+                </label>
+                <label>Format: ^[0-9]{10}$
+                    {{input value=taxId type='text' placeholder='Tax ID'}}
+                </label>
+                {{input value=country type='text' placeholder='Country'}}
+            {{/if}}
+
+            <button {{action 'createPurchase'}}>BUY TICKET</button>
+        </form>
+    </div>
+</div>
