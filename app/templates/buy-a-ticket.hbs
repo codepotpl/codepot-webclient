@@ -1,0 +1,81 @@
+<section id="buy-a-ticket">
+    <div class="row">
+        <div class="small-12 columns">
+            <h1>Buy a Ticket</h1>
+        </div>
+    </div>
+
+    {{#if prices}}
+        <div class="row">
+            <div class="small-12 medium-6 medium-centered columns">
+                <form {{action 'createPurchase' on='submit'}}>
+                    <p>
+                        To sign up for our conference you need to buy a ticket. Please note that prices will get higher
+                        in time.
+                    </p>
+
+                    <h2>1. Select your ticket:</h2>
+                    {{#each price in prices}}
+                        <button {{bind-attr class='price.isSelected:success'}} {{action 'selectPrice' price.id}}>
+                            {{price.name}} - {{price.totalPriceInPLN}} PLN
+                        </button>
+                    {{/each}}
+                    <h2>2. Provide promo code:</h2>
+
+                    <p>
+                        If you have a promo code please paste it below.
+                    </p>
+                    <div>
+                        {{input value=promoCode id='promo-code-input' type='text' placeholder='Your Promo Code' maxlength=6 focus-out='onPromoCodeFocusOut'}}
+                        <small class="error hidden">Invalid promo code. It will be ignored.</small>
+                    </div>
+
+                    {{#if promoCodeInfo}}
+                        <p>This promo code gives you {{promoCodeInfo.discount}}% discount.</p>
+                    {{/if}}
+
+                    {{#unless ticketIsForFree}}
+                        <h2>3. Fill Invoice Data</h2>
+                        {{input value=name type='text' placeholder='Name'}}
+                        {{input value=street type='text' placeholder='Street'}}
+                        <label>Format: 00-000
+                            {{input value=zipCode type='text' placeholder='ZIP Code'}}
+                        </label>
+                        <label>Format: 000-000-00-00
+                            {{input value=taxId type='text' placeholder='Tax ID'}}
+                        </label>
+                        {{input value=country type='text' placeholder='Country'}}
+                    {{/unless}}
+
+                    <h2>Summary</h2>
+                    <span>You are buying:</span>
+                    <span>{{selectedPricing.name}}</span>
+                    {{#if promoCodeInfo}}
+                        <span>With {{promoCodeInfo.discount}}% discount</span>
+                        <span>For: {{priceAfterDiscount}} PLN</span>
+                    {{else}}
+                        <span>For: {{selectedPricing.totalPriceInPLN}} PLN</span>
+                    {{/if}}
+
+                    {{#if ticketIsForFree}}
+                        <button {{action 'createPurchase' 'FREE'}}>GET TICKET</button>
+                    {{else}}
+                        <button {{action 'createPurchase' 'TRANSFER'}} {{bind-attr disabled='disablePayButtons'}}>PAY WITH TRANSFER</button>
+                        <button {{action 'createPurchase' 'PAYU'}} {{bind-attr disabled='disablePayButtons'}}>PAY WITH PAYU</button>
+                    {{/if}}
+                </form>
+            </div>
+        </div>
+    {{else}}
+        <div class="row">
+            <div class="small-12 columns">
+                <h2>Oops...</h2>
+
+                <p>It seems that there are no tickets to buy!</p>
+
+                <p>If you think this could be an error please reach us via: <a href="mailto:tickets@codepot.pl">tickets@codepot.pl</a>
+                </p>
+            </div>
+        </div>
+    {{/if}}
+</section>

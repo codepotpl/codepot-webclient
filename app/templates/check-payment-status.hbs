@@ -1,0 +1,59 @@
+<div class="row">
+    <div class="small-12 columns">
+        <h1>My Payment</h1>
+
+        <p>
+            <strong>Hello {{controllers.application.userData.user.firstName}}!</strong>
+        </p>
+
+        <p>
+            We have noted your ticket order. Before registering you for the workshops, first we need to process your
+            payment.
+        </p>
+
+        <p>
+            You can check your payment status below:
+        </p>
+
+        {{#if isFree}}
+            <p>Congratulations. You have been granted a free ticket.</p>
+
+            <p>No payment is needed.</p>
+        {{else}}
+            <p>
+                Your payment status: {{purchase.paymentStatus}}
+            </p>
+
+            <p>
+                Payment type: {{purchase.paymentType}}
+            </p>
+
+            {{#if isTransfer}}
+                HERE WE HAVE TRANSFER DATA
+            {{/if}}
+
+            {{#if showPayWithPayUButton}}
+                <button {{action 'payWithPayU'}}>Pay with PayU</button>
+            {{/if}}
+
+            {{#if isPayU}}
+                YOUR PAYU PAYMENT IS BEING PROCESSED
+            {{/if}}
+        {{/if}}
+
+        {{#if isCompleted}}
+            {{#link-to 'dashboard'}}
+                <button>GO TO DASHBOARD</button>
+            {{/link-to}}
+        {{else}}
+            <p>
+                In case of any problems please contact us via <a href="mailto:tickets@codepot.pl">tickets@codepot.pl</a>
+            </p>
+        {{/if}}
+
+        {{#if isFailed}}
+            Oops! Something went wrong. Please contact us via <a href="mailto:tickets@codepot.pl">tickets@codepot.pl</a>.
+        {{/if}}
+
+    </div>
+</div>

@@ -1,7 +1,20 @@
+$codepot-green: green;
+
 @import "normalize";
 @import "foundation/components/grid";
 @import "foundation/components/visibility";
 @import "foundation/components/forms";
+$topbar-bg-color: $codepot-green;
+@import "foundation/components/top-bar";
+.top-bar {
+  .title-area {
+    padding: 0 $column-gutter/2;
+  }
+  img {
+    height: rem-calc(34);
+  }
+}
+
 
 #loading-indicator {
   z-index: 999;
