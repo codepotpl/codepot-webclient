@@ -1,8 +1,7 @@
 import Ember from 'ember';
 import showLoadingIndicator from '../utils/show-loading-indicator';
 import cdptRequest from '../utils/cdpt-request';
-
-
+import config from '../config/environment';
 
 export default Ember.Controller.extend({
   needs: ['application'],
@@ -92,7 +91,7 @@ export default Ember.Controller.extend({
         productId: this.get('selectedPricing.id'),
         paymentType: type,
         paymentInfo: {
-          redirectLink: 'http://localhost:4200/check-payment-status' //TODO to ENVs
+          redirectLink: config.BASE_URL + 'check-payment-status'
         },
         invoice: type === 'FREE' ? null : {
           name: this.get('name') ? this.get('name') : null,
