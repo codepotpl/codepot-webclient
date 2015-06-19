@@ -49,12 +49,13 @@ export default Ember.Controller.extend({
   }.property('promoCodeInfo'),
 
   anyFieldInInvoiceFormIsFilled: function () {
-    return this.get('name') || this.get('street') || this.get('zipCode') || this.get('taxId') || this.get('country');
-  }.property('name', 'street', 'zipCode', 'taxId', 'country'),
+    return this.get('name') || this.get('city') || this.get('street') || this.get('zipCode') || this.get('taxId') || this.get('country');
+  }.property('name', 'city', 'street', 'zipCode', 'taxId', 'country'),
 
   invoiceFormValid: function () {
     if (this.get('anyFieldInInvoiceFormIsFilled')) {
       return this.get('name')
+        && this.get('city')
         && this.get('street')
         && new RegExp('\\d{2}-\\d{3}').test(this.get('zipCode'))
         && new RegExp('\\d{10}|\\d{3}-\\d{3}-\\d{2}-\\d{2}').test(this.get('taxId'))
@@ -62,7 +63,7 @@ export default Ember.Controller.extend({
     } else {
       return true;
     }
-  }.property('anyFieldInInvoiceFormIsFilled', 'name', 'street', 'zipCode', 'taxId', 'country'),
+  }.property('anyFieldInInvoiceFormIsFilled', 'name', 'city', 'street', 'zipCode', 'taxId', 'country'),
 
   disablePayButtons: function () {
     return !this.get('invoiceFormValid');
@@ -95,6 +96,7 @@ export default Ember.Controller.extend({
         },
         invoice: type === 'FREE' ? null : {
           name: this.get('name') ? this.get('name') : null,
+          city: this.get('city') ? this.get('city') : null,
           street: this.get('street') ? this.get('street') : null,
           zipCode: this.get('zipCode') ? this.get('zipCode') : null,
           taxId: this.get('taxId') ? this.get('taxId').replace(/-/g, '') : null,
