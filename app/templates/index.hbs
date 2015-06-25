@@ -28,11 +28,11 @@
 
         <form {{action "signIn" on="submit"}}>
             <div>
-              {{input value=signInEmail id='sign-in-email-input' type='email' placeholder='E-Mail Address' focus-out='onSignInEmailFocusOut'}}
+              {{input value=signInEmail id='sign-in-email-input' name='email' type='email' placeholder='E-Mail Address' focus-out='onSignInEmailFocusOut'}}
                 <small class="error hidden">Valid e-mail address required.</small>
             </div>
             <div>
-              {{input value=signInPassword id='sign-in-pasword-input' type='password' placeholder='Password'}}
+              {{input value=signInPassword id='sign-in-pasword-input' name='password' type='password' placeholder='Password'}}
                 <small id="failed-to-sign-in-error" class="error hidden">Invalid e-mail address or password.</small>
             </div>
             <button {{bind-attr disabled=signInButtonDisabled}}>SIGN IN</button>

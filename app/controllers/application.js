@@ -26,7 +26,7 @@ export default Ember.Controller.extend({
   },
 
   isUserSingnedIn: function () {
-    return this.get('userData.token');
+    return this.get('userData.token') && this.get('userData.user');
   },
 
   isUserSignedInProperty: function (){
