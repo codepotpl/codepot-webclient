@@ -1,8 +1,9 @@
 FROM node:0.12.2-slim
 MAINTAINER Tomasz Netczuk contact@netczuk.pl
 
-RUN ["apt-get", "update"]
-RUN ["apt-get", "install", "git", "-y"]
+RUN apt-get update && \
+    apt-get install git -y && \
+    apt-get clean
 
 WORKDIR /app
 ADD package.json /app/package.json
