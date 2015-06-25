@@ -20,17 +20,17 @@ export default Ember.Controller.extend({
       user: userData ? upsert(this.store, 'user', userData) : null,
       token: token
     });
-    if (token) {
+    if (this.isUserSignedIn()) {
       EmberENV.AUTHORIZATION_TOKEN = token;
     }
   },
 
-  isUserSingnedIn: function () {
+  isUserSignedIn: function () {
     return this.get('userData.token') && this.get('userData.user');
   },
 
   isUserSignedInProperty: function (){
-    return this.isUserSingnedIn();
+    return this.isUserSignedIn();
   }.property('userData.token'),
 
   signOut: function () {

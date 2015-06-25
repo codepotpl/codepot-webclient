@@ -4,7 +4,7 @@ import cdptRequest from '../utils/cdpt-request';
 
 export default Ember.Route.extend({
   beforeModel: function (transition, queryParams) {
-    if (this.controllerFor('application').isUserSingnedIn()) {
+    if (this.controllerFor('application').isUserSignedIn()) {
       transition.abort();
       this.transitionTo('dashboard');
     }

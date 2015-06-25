@@ -16,7 +16,7 @@
 
                     <h2>1. Select your ticket:</h2>
                     {{#each price in prices}}
-                        <button {{bind-attr class='price.isSelected:success'}} {{action 'selectPrice' price.id}}>
+                        <button {{bind-attr class='price.isSelected:success'}} {{action 'selectPrice' price.id}} {{bind-attr disabled='price.isDisabled'}}>
                             {{price.name}} - {{price.totalPriceInPLN}} PLN
                         </button>
                     {{/each}}

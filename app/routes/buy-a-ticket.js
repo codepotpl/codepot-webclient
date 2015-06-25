@@ -16,7 +16,7 @@ export default Ember.Route.extend(authenticatedRoute, {
         route.transitionTo('/dashboard');
       })
       .fail(function (error) {
-          transition.retry();
+        transition.retry();
       });
   },
 
@@ -27,14 +27,14 @@ export default Ember.Route.extend(authenticatedRoute, {
     cdptRequest(url, 'GET')
       .then(function (result) {
         var prices = result.prices
-          .filter(function (price) {
-            return price.active;
-          })
           .map(function (price) {
             return upsert(controller.store, 'price', price)
           });
-        if (prices.length > 0) {
-          prices[0].isSelected = true;
+        var activePrices = prices.filter(function (price) {
+          return price.active;
+        });
+        if (activePrices.length > 0) {
+          activePrices[0].isSelected = true;
         }
         controller.set('prices', prices);
       })

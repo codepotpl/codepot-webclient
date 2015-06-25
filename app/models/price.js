@@ -8,5 +8,8 @@ export default DS.Model.extend({
   totalPriceInPLN: function () {
     return (this.get('priceNet') * (1 + this.get('priceVat')) ) / 100;
   }.property('priceNet', 'priceVat'),
-  isActive: DS.attr('boolean', {defaultValue: false})
+  isActive: DS.attr('boolean', {defaultValue: false}),
+  isDisabled: function() {
+    return !this.get('active');
+  }.property('active')
 });
