@@ -1,41 +1,43 @@
-<div class="row">
+<div class="row" class="index">
     <div class="small-12 medium-6 columns">
         <h1>Welcome to Codepot registration app!</h1>
 
-        <h2>Please register to leave your e-mail address. Soon we well inform you when you can buy tickets for our
-            event.</h2>
+        <h2>
+            Please register to leave your e-mail address. Soon we well inform you when you can buy tickets for our
+            event.
+        </h2>
     </div>
 
     <div class="small-12 medium-6 columns">
         <h2>Register</h2>
 
         <form  {{action "signUp" on="submit"}}>
-          {{input value=signUpFirstName type='text' placeholder='First Name'}}
-          {{input value=signUpLastName type='text' placeholder='Last Name'}}
+            {{input value=signUpFirstName type='text' placeholder='First Name'}}
+            {{input value=signUpLastName type='text' placeholder='Last Name'}}
             <div>
-              {{input value=signUpEmail id='sign-up-email-input' type='email' placeholder='E-Mail Address' focus-out='onSignUpEmailFocusOut'}}
+                {{input value=signUpEmail id='sign-up-email-input' type='email' placeholder='E-Mail Address' focus-out='onSignUpEmailFocusOut'}}
                 <small class="error hidden">Valid e-mail address required.</small>
                 <small id="email-taken-error" class="error hidden">Given e-mail address is already taken.</small>
             </div>
-          {{input value=signUpPassword type='password' placeholder='Password'}}
-          <span class="hint">
+            {{input value=signUpPassword type='password' placeholder='Password'}}
+            <span class="hint">
               By registering you approve our {{#link-to 'terms-of-service'}}terms of service{{/link-to}}.
           </span>
-            <button {{bind-attr disabled=signUpButtonDisabled}}>REGISTER</button>
+            <button class="success" {{bind-attr disabled=signUpButtonDisabled}}>REGISTER</button>
         </form>
 
         <h2>Or Sign In</h2>
 
         <form {{action "signIn" on="submit"}}>
             <div>
-              {{input value=signInEmail id='sign-in-email-input' name='email' type='email' placeholder='E-Mail Address' focus-out='onSignInEmailFocusOut'}}
+                {{input value=signInEmail id='sign-in-email-input' name='email' type='email' placeholder='E-Mail Address' focus-out='onSignInEmailFocusOut'}}
                 <small class="error hidden">Valid e-mail address required.</small>
             </div>
             <div>
-              {{input value=signInPassword id='sign-in-pasword-input' name='password' type='password' placeholder='Password'}}
+                {{input value=signInPassword id='sign-in-pasword-input' name='password' type='password' placeholder='Password'}}
                 <small id="failed-to-sign-in-error" class="error hidden">Invalid e-mail address or password.</small>
             </div>
-            <button {{bind-attr disabled=signInButtonDisabled}}>SIGN IN</button>
+            <button class="success" {{bind-attr disabled=signInButtonDisabled}}>SIGN IN</button>
         </form>
 
         <h2>More...</h2>
