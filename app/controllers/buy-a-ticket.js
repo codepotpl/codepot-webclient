@@ -54,12 +54,11 @@ export default Ember.Controller.extend({
 
   invoiceFormValid: function () {
     if (this.get('anyFieldInInvoiceFormIsFilled')) {
-      return this.get('name')
-        && this.get('city')
-        && this.get('street')
-        && new RegExp('\\d{2}-\\d{3}').test(this.get('zipCode'))
-        && new RegExp('\\d{10}|\\d{3}-\\d{3}-\\d{2}-\\d{2}').test(this.get('taxId'))
-        && this.get('country')
+      return this.get('name') &&
+        this.get('street') &&
+        new RegExp('\\d{2}-\\d{3}').test(this.get('zipCode')) &&
+        new RegExp('\\d{10}|\\d{3}-\\d{3}-\\d{2}-\\d{2}').test(this.get('taxId')) &&
+        this.get('country');
     } else {
       return true;
     }

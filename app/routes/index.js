@@ -3,7 +3,7 @@ import showLoadingIndicator from '../utils/show-loading-indicator';
 import cdptRequest from '../utils/cdpt-request';
 
 export default Ember.Route.extend({
-  beforeModel: function (transition, queryParams) {
+  beforeModel: function (transition) {
     if (this.controllerFor('application').isUserSignedIn()) {
       transition.abort();
       this.transitionTo('dashboard');

@@ -15,19 +15,19 @@ export default Ember.Controller.extend({
   }.property('signUpFirstName', 'signUpLastName', 'signUpPassword', 'signUpEmail'),
 
   signInEmailChanged: function () {
-    var emailInput = $('#sign-in-email-input');
+    var emailInput = Ember.$('#sign-in-email-input');
     emailInput.removeClass('error');
     emailInput.siblings().addClass('hidden');
   }.observes('signInEmail'),
 
   signInPasswordChanged: function() {
-    var passwordInput = $('#sign-in-pasword-input');
+    var passwordInput = Ember.$('#sign-in-pasword-input');
     passwordInput.removeClass('error');
     passwordInput.siblings().addClass('hidden');
   }.observes('signInPassword'),
 
   signUpEmailChanged: function () {
-    var emailInput = $('#sign-up-email-input');
+    var emailInput = Ember.$('#sign-up-email-input');
     emailInput.removeClass('error');
     emailInput.siblings().addClass('hidden');
   }.observes('signUpEmail'),
@@ -44,7 +44,7 @@ export default Ember.Controller.extend({
   showErrorLabelIfNeeded : function(propertyName, id) {
     var email = this.get(propertyName);
     if (email && !validateEmail(email)) {
-      var emailInput = $(id);
+      var emailInput = Ember.$(id);
       emailInput.addClass('error');
       emailInput.siblings().not('#email-taken-error').removeClass('hidden');
     }
@@ -52,16 +52,16 @@ export default Ember.Controller.extend({
 
   showFailedToSignInError : function() {
     this.set('signInPassword', '');
-    var passwordInput = $('#sign-in-pasword-input');
+    var passwordInput = Ember.$('#sign-in-pasword-input');
     passwordInput.addClass('error');
-    $('#failed-to-sign-in-error').removeClass('hidden');
+    Ember.$('#failed-to-sign-in-error').removeClass('hidden');
     passwordInput.select();
   },
 
   showEmailAddressAlreadyTakenError : function() {
-    var emailInput = $('#sign-up-email-input');
+    var emailInput = Ember.$('#sign-up-email-input');
     emailInput.addClass('error');
-    $('#email-taken-error').removeClass('hidden');
+    Ember.$('#email-taken-error').removeClass('hidden');
     emailInput.select();
   }
 });

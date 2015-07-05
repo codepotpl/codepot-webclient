@@ -4,7 +4,7 @@ import cdptRequest from '../utils/cdpt-request';
 import showLoadingIndicator from '../utils/show-loading-indicator';
 
 export default Ember.Route.extend(authenticatedRoute, {
-  setupController: function (controller, model) {
+  setupController: function (controller) {
     showLoadingIndicator(true);
 
     var route = this;
@@ -18,11 +18,9 @@ export default Ember.Route.extend(authenticatedRoute, {
       .fail(function (error) {
         if (error.status === 404) {
           route.transitionTo('/buy-a-ticket');
-        } else {
-          transition.retry();
         }
       })
-      .always(function(){
+      .always(function () {
         showLoadingIndicator(false);
       });
   }

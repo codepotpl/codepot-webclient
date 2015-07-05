@@ -12,15 +12,15 @@ export default Ember.Route.extend(authenticatedRoute, {
     var userId = this.controllerFor('application').get('userData').user.get('id');
     var url = 'api/users/' + userId + '/purchase/';
     cdptRequest(url, 'GET')
-      .then(function (response) {
+      .then(function () {
         route.transitionTo('/dashboard');
       })
-      .fail(function (error) {
+      .fail(function () {
         transition.retry();
       });
   },
 
-  setupController: function (controller, model) {
+  setupController: function (controller) {
     showLoadingIndicator(true);
 
     var url = 'api/prices/';
@@ -28,7 +28,7 @@ export default Ember.Route.extend(authenticatedRoute, {
       .then(function (result) {
         var prices = result.prices
           .map(function (price) {
-            return upsert(controller.store, 'price', price)
+            return upsert(controller.store, 'price', price);
           });
         var activePrices = prices.filter(function (price) {
           return price.active;
