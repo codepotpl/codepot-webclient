@@ -1,59 +1,66 @@
-<div class="row">
-    <div class="small-12 columns">
-        <h1>My Payment</h1>
-
-        <p>
-            <strong>Hello {{controllers.application.userData.user.firstName}}!</strong>
-        </p>
-
-        <p>
-            We have noted your ticket order. Before registering you for the workshops, first we need to process your
-            payment.
-        </p>
-
-        <p>
-            You can check your payment status below:
-        </p>
-
-        {{#if isFree}}
-            <p>Congratulations. You have been granted a free ticket.</p>
-
-            <p>No payment is needed.</p>
-        {{else}}
-            <p>
-                Your payment status: {{purchase.paymentStatus}}
-            </p>
+<section id="check-payment-status">
+    <div class="row">
+        <div class="small-12 columns">
+            <h1>My Payment</h1>
 
             <p>
-                Payment type: {{purchase.paymentType}}
+                <strong>Hello {{controllers.application.userData.user.firstName}}!</strong>
             </p>
 
-            {{#if isTransfer}}
-                HERE WE HAVE TRANSFER DATA
+            {{#unless isCompleted}}
+                <p>
+                    We have noted your ticket order. Before registering you for the workshops, first we need to process
+                    your payment.
+                </p>
+            {{/unless}}
+
+            {{#if isFree}}
+                <p>Congratulations. You have been granted a free ticket.</p>
+
+                <p>No payment is needed.</p>
+            {{else}}
+                {{#if isTransfer}}
+                    <h3>Please send transfer with this data:</h3>
+                    <span>Account number: <strong>{{paymentInfo.transferData.accountNo}}</strong></span>
+                    <span>City: <strong>{{paymentInfo.transferData.city}}</strong></span>
+                    <span>Street: <strong>{{paymentInfo.transferData.street}}</strong></span>
+                    <span>ZIP code: <strong>{{paymentInfo.transferData.zipCode}}</strong></span>
+                    <span>Title: <strong>{{paymentInfo.transferData.title}}</strong></span>
+                {{/if}}
+
+                {{#if showPayWithPayUButton}}
+                    <button {{action 'payWithPayU'}}>Pay with PayU</button>
+                {{/if}}
+
+                {{#if isPayU}}
+                    YOUR PAYU PAYMENT IS BEING PROCESSED
+                {{/if}}
             {{/if}}
 
-            {{#if showPayWithPayUButton}}
-                <button {{action 'payWithPayU'}}>Pay with PayU</button>
+            <h3>Your payment status:</h3>
+
+            <span>Payment status: <strong>{{purchase.paymentStatus}}</strong></span>
+            <span>Payment id: {{purchase.id}}</span>
+            <span>Payment type: {{purchase.paymentType}}</span>
+
+            {{#if isCompleted}}
+                <div class="button-wrapper">
+                    {{#link-to 'dashboard'}}
+                        <button class="success">GO TO DASHBOARD</button>
+                    {{/link-to}}
+                </div>
+            {{else}}
+                <p>
+                    In case of any problems please contact us via <a
+                        href="mailto:tickets@codepot.pl">tickets@codepot.pl</a>
+                </p>
             {{/if}}
 
-            {{#if isPayU}}
-                YOUR PAYU PAYMENT IS BEING PROCESSED
+            {{#if isFailed}}
+                Oops! Something went wrong. Please contact us via <a
+                    href="mailto:tickets@codepot.pl">tickets@codepot.pl</a>.
             {{/if}}
-        {{/if}}
 
-        {{#if isCompleted}}
-            {{#link-to 'dashboard'}}
-                <button>GO TO DASHBOARD</button>
-            {{/link-to}}
-        {{else}}
-            <p>
-                In case of any problems please contact us via <a href="mailto:tickets@codepot.pl">tickets@codepot.pl</a>
-            </p>
-        {{/if}}
-
-        {{#if isFailed}}
-            Oops! Something went wrong. Please contact us via <a href="mailto:tickets@codepot.pl">tickets@codepot.pl</a>.
-        {{/if}}
-
+        </div>
     </div>
-</div>
+</section>

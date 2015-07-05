@@ -118,3 +118,16 @@ section#buy-a-ticket {
     }
   }
 }
+
+section#check-payment-status {
+  span {
+    display: block;
+  }
+  .button-wrapper {
+    margin: 2rem 0;
+    text-align: center;
+    button {
+      font-size: 1.125*1.125rem;
+    }
+  }
+}
