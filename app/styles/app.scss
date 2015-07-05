@@ -7,6 +7,12 @@ $success-color: $codepot-green;
 @import "foundation/components/visibility";
 @import "foundation/components/forms";
 $topbar-bg-color: $codepot-green;
+$topbar-link-bg: $codepot-green;
+$topbar-link-bg-hover: scale-color($codepot-green, $lightness: -14%);
+$topbar-link-bg-color-hover: $charcoal !default;
+$topbar-link-bg-active: $primary-color !default;
+$topbar-dropdown-bg: $codepot-green !default;
+
 @import "foundation/components/top-bar";
 .top-bar {
   .title-area {
@@ -14,6 +20,15 @@ $topbar-bg-color: $codepot-green;
   }
   img {
     height: rem-calc(34);
+  }
+  .static {
+    text-decoration: none;
+    background: $topbar-bg-color;
+    padding: 0 0.5rem;
+    color: white;
+  }
+  a {
+    text-decoration: none;
   }
 }
 

@@ -10,6 +10,7 @@ export default Ember.Route.extend({
     }
   },
 
+  //TODO add prices on index
   //setupController: function (controller) {
   //  this.store
   //    .find('price')

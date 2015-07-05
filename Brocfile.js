@@ -10,6 +10,9 @@ var app = new EmberApp({
   }
 });
 
+app.import('bower_components/foundation/js/foundation.js');
+app.import('bower_components/foundation/js/foundation/foundation.topbar.js');
+
 // Use `app.import` to add additional libraries to the generated
 // output files.
 //

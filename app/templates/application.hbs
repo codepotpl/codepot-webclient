@@ -9,7 +9,8 @@
     <section class="top-bar-section">
         <ul class="right">
             {{#if isUserSignedInProperty}}
-                <li><a href="#" {{action 'signOut'}}>Sign out</a></li>
+                <li class="static">Hi there {{userData.user.firstName}} {{userData.user.lastName}}!</li>
+                <li><a href="#" {{action 'signOut'}}>Sign Out</a></li>
             {{/if}}
         </ul>
     </section>
