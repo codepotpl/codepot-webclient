@@ -9,7 +9,7 @@ export default Ember.Route.extend(authenticatedRoute, {
 
     var route = this;
     var userId = this.controllerFor('application').get('userData').user.get('id');
-    var url = 'api/users/' + userId + '/purchase/';
+    var url = '/api/users/' + userId + '/purchase/';
     cdptRequest(url, 'GET')
       .then(function (response) {
         controller.set('purchase', response.purchase);

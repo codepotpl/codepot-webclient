@@ -3,12 +3,29 @@ import showLoadingIndicator from '../utils/show-loading-indicator';
 import cdptRequest from '../utils/cdpt-request';
 
 export default Ember.Route.extend({
-  beforeModel: function (transition) {
+  beforeModel: function (transition, queryParams) {
     if (this.controllerFor('application').isUserSignedIn()) {
       transition.abort();
       this.transitionTo('dashboard');
     }
   },
+
+  //setupController: function (controller) {
+  //  this.store
+  //    .find('price')
+  //    .then(function (result) {
+  //      console.log(result);
+  //    })
+  //    .catch(function (error) {
+  //      console.log(error);
+  //      //if (error.status === 401) {
+  //      //  controller.controllerFor('application').set('userData', null);
+  //      //  controller.transitionToRoute('index');
+  //      //} else {
+  //      //  this.send('error', error);
+  //      //}
+  //    });
+  //},
 
   actions: {
     signIn: function () {
@@ -18,7 +35,7 @@ export default Ember.Route.extend({
         password: this.controller.get('signInPassword')
       };
       var route = this;
-      cdptRequest('api/auth/sign-in/', 'POST', data)
+      cdptRequest('/api/auth/sign-in/', 'POST', data)
         .then(function (responseData, status, response) {
           route.controllerFor('application').setUser(responseData, response.getResponseHeader('token'));
           route.transitionTo('dashboard');
@@ -41,13 +58,13 @@ export default Ember.Route.extend({
         password: this.controller.get('signUpPassword')
       };
       var route = this;
-      cdptRequest('api/auth/sign-up/', 'POST', data)
+      cdptRequest('/api/auth/sign-up/', 'POST', data)
         .then(function (responseData, status, response) {
           route.controllerFor('application').setUser(responseData, response.getResponseHeader('token'));
           route.transitionTo('dashboard');
         })
         .fail(function (error) {
-          if (error.responseJSON.code === 100) {
+          if (error.responseJSON && error.responseJSON.code === 100) {
             route.controller.showEmailAddressAlreadyTakenError();
           }
         })

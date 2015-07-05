@@ -9,7 +9,7 @@ export default Ember.Controller.extend({
   }.observes('userData'),
 
   loadUserFromLocalstorage: function () {
-    if (localStorage.userData) {
+    if (localStorage.userData && JSON.parse(localStorage.userData)) {
       var userData = JSON.parse(localStorage.userData);
       this.setUser(userData.user, userData.token);
     }
@@ -24,7 +24,7 @@ export default Ember.Controller.extend({
   },
 
   isUserSignedIn: function () {
-    return this.get('userData.token') && this.get('userData.user');
+    return !!this.get('userData.token') && !!this.get('userData.user');
   },
 
   isUserSignedInProperty: function () {

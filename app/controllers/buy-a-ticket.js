@@ -31,13 +31,14 @@ export default Ember.Controller.extend({
   fetchPromoCodeInfo: function (promoCode) {
     showLoadingIndicator(true);
     var controller = this;
-    var url = 'api/promo-codes/' + promoCode + '/';
+    var url = '/api/promo-codes/' + promoCode + '/';
     cdptRequest(url, 'GET')
       .then(function (result) {
         controller.set('promoCodeInfo', result.active ? result : null);
       })
-      .fail(function () {
+      .fail(function (error) {
         controller.set('promoCodeInfo', null);
+        controller.sendAction('error', error);
       })
       .always(function () {
         showLoadingIndicator(false);
@@ -85,7 +86,7 @@ export default Ember.Controller.extend({
 
     createPurchase: function (type) {
       showLoadingIndicator(true);
-      var url = 'api/purchases/new/';
+      var url = '/api/purchases/new/';
       var data = {
         promoCode: this.get('promoCodeInfo') ? this.get('promoCode') : null,
         productId: this.get('selectedPricing.id'),
@@ -118,7 +119,7 @@ export default Ember.Controller.extend({
           }
         })
         .fail(function (error) {
-          console.log(error);
+          controller.sendAction('error', error);
         })
         .always(function () {
           showLoadingIndicator(false);

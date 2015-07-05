@@ -6,24 +6,22 @@ import upsert from '../utils/upsert';
 
 export default Ember.Route.extend(authenticatedRoute, {
   beforeModel: function (transition, queryParams) {
-    this._super(transition, queryParams);
-    //transition.abort();
     var route = this;
-    var userId = this.controllerFor('application').get('userData').user.get('id');
-    var url = 'api/users/' + userId + '/purchase/';
+    var userId = this.controllerFor('application').get('userData.user.id');
+    var url = '/api/users/' + userId + '/purchase/';
     cdptRequest(url, 'GET')
       .then(function () {
         route.transitionTo('/dashboard');
       })
-      .fail(function () {
-        transition.retry();
+      .fail(function (error) {
+        route.send('error', error);
       });
   },
 
   setupController: function (controller) {
     showLoadingIndicator(true);
 
-    var url = 'api/prices/';
+    var url = '/api/prices/';
     cdptRequest(url, 'GET')
       .then(function (result) {
         var prices = result.prices
