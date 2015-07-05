@@ -9,15 +9,12 @@
         <div class="row">
             <div class="small-12 medium-6 medium-centered columns">
                 <form {{action 'createPurchase' on='submit'}}>
-                    <p>
-                        To sign up for our conference you need to buy a ticket. Please note that prices will get higher
-                        in time.
-                    </p>
-
                     <h2>1. Select your ticket:</h2>
                     {{#each price in prices}}
                         <button {{bind-attr class='price.isSelected:success'}} {{action 'selectPrice' price.id}} {{bind-attr disabled='price.isDisabled'}}>
-                            {{price.name}} - {{price.totalPriceInPLN}} PLN
+                            <span class="name">{{price.name}}</span>
+                            <span class="price">{{price.netPriceInPln}} PLN + {{price.priceVatPercentage}}% VAT</span>
+                            <span class="total-price">(total: {{price.totalPriceInPLN}} PLN)</span>
                         </button>
                     {{/each}}
                     <h2>2. Provide promo code:</h2>

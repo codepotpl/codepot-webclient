@@ -75,3 +75,22 @@ span.hint {
     width: 100%;
   }
 }
+
+section#buy-a-ticket {
+  button {
+    width: 100%;
+    span {
+      display: block;
+    }
+    .name {
+      font-size: 1.125rem;
+    }
+    .price {
+      font-size: 1.125*1.125rem;
+    }
+    .total-price {
+      font-size: 1/1.125rem;
+      color: scale-color($codepot-green, $lightness: -14%);
+    }
+  }
+}

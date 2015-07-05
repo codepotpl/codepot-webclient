@@ -5,11 +5,17 @@ export default DS.Model.extend({
   active: DS.attr('boolean', {defaultValue: false}),
   priceNet: DS.attr('number'),
   priceVat: DS.attr('number'),
+  netPriceInPln: function () {
+    return this.get('priceNet') / 100;
+  }.property('priceNet'),
+  priceVatPercentage: function () {
+    return this.get('priceVat') * 100;
+  }.property('priceVat'),
   totalPriceInPLN: function () {
     return (this.get('priceNet') * (1 + this.get('priceVat')) ) / 100;
   }.property('priceNet', 'priceVat'),
   isActive: DS.attr('boolean', {defaultValue: false}),
-  isDisabled: function() {
+  isDisabled: function () {
     return !this.get('active');
   }.property('active')
 });
