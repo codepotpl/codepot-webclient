@@ -14,7 +14,8 @@
                         <button {{bind-attr class='price.isSelected:success'}} {{action 'selectPrice' price.id}} {{bind-attr disabled='price.isDisabled'}}>
                             <span class="name">{{price.name}}</span>
                             <span class="price">{{price.netPriceInPln}} PLN + {{price.priceVatPercentage}}% VAT</span>
-                            <span class="total-price">(total: {{price.totalPriceInPLN}} PLN)</span>
+                            <span class="total-price">total: {{price.totalPriceInPLN}} PLN</span>
+                            <span class="dates">available until: {{moment price.dateTo 'YYYY-MM-DD'}}</span>
                         </button>
                     {{/each}}
                     <h2>2. Provide promo code:</h2>

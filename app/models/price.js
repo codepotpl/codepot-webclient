@@ -5,6 +5,7 @@ export default DS.Model.extend({
   active: DS.attr('boolean', {defaultValue: false}),
   priceNet: DS.attr('number'),
   priceVat: DS.attr('number'),
+  dateTo: DS.attr('number'),
   netPriceInPln: function () {
     return this.get('priceNet') / 100;
   }.property('priceNet'),

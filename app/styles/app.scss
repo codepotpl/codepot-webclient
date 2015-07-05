@@ -88,9 +88,9 @@ section#buy-a-ticket {
     .price {
       font-size: 1.125*1.125rem;
     }
-    .total-price {
+    .total-price, .dates {
       font-size: 1/1.125rem;
-      color: scale-color($codepot-green, $lightness: -14%);
+      color: scale-color($codepot-green, $lightness: -20%);
     }
   }
 }
