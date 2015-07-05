@@ -23,6 +23,7 @@
                     <p>
                         If you have a promo code please paste it below.
                     </p>
+
                     <div>
                         {{input value=promoCode id='promo-code-input' type='text' placeholder='Your Promo Code' maxlength=6 focus-out='onPromoCodeFocusOut'}}
                         <small class="error hidden">Invalid promo code. It will be ignored.</small>
@@ -46,22 +47,40 @@
                         {{input value=country type='text' placeholder='Country'}}
                     {{/unless}}
 
-                    <h2>Summary</h2>
-                    <span>You are buying:</span>
-                    <span>{{selectedPricing.name}}</span>
-                    {{#if promoCodeInfo}}
-                        <span>With {{promoCodeInfo.discount}}% discount</span>
-                        <span>For: {{priceAfterDiscount}} PLN</span>
-                    {{else}}
-                        <span>For: {{selectedPricing.totalPriceInPLN}} PLN</span>
-                    {{/if}}
+                    <div class="summary">
+                        <h2>Summary</h2>
+                        <span>You are buying:</span>
+                        <span><strong>{{selectedPricing.name}}</strong></span>
+                        {{#if promoCodeInfo}}
+                            <span>
+                            For: {{selectedPricing.netPriceInPln}} PLN
+                                + {{selectedPricing.priceVatPercentage}}% VAT
+                                = {{selectedPricing.totalPriceInPLN}} PLN
+                            </span>
+                            <span>With {{promoCodeInfo.discount}}% discount</span>
+                            <span>Total: <strong>{{priceAfterDiscount}} PLN</strong></span>
+                        {{else}}
+                            <span>
+                                For: {{selectedPricing.netPriceInPln}} PLN + {{selectedPricing.priceVatPercentage}}% VAT = <strong>{{selectedPricing.totalPriceInPLN}}
+                                PLN</strong>
+                            </span>
+                        {{/if}}
+                    </div>
 
-                    {{#if ticketIsForFree}}
-                        <button {{action 'createPurchase' 'FREE'}}>GET TICKET</button>
-                    {{else}}
-                        <button {{action 'createPurchase' 'TRANSFER'}} {{bind-attr disabled='disablePayButtons'}}>PAY WITH TRANSFER</button>
-                        <button {{action 'createPurchase' 'PAYU'}} {{bind-attr disabled='disablePayButtons'}}>PAY WITH PAYU</button>
-                    {{/if}}
+                    <div class="buttons">
+                        {{#if ticketIsForFree}}
+                            <button class="success" {{action 'createPurchase' 'FREE'}}>
+                                GET TICKET
+                            </button>
+                        {{else}}
+                            <button class="success" {{action 'createPurchase' 'TRANSFER'}} {{bind-attr disabled='disablePayButtons'}}>
+                                PAY WITH TRANSFER
+                            </button>
+                            <button class="success" {{action 'createPurchase' 'PAYU'}} {{bind-attr disabled='disablePayButtons'}}>
+                                PAY WITH PAYU
+                            </button>
+                        {{/if}}
+                    </div>
                 </form>
             </div>
         </div>

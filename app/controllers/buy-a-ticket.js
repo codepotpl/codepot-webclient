@@ -25,7 +25,9 @@ export default Ember.Controller.extend({
   }.observes('promoCode'),
 
   priceAfterDiscount: function () {
-    return this.get('selectedPricing.totalPriceInPLN') * (100 - this.get('promoCodeInfo.discount')) / 100;
+    var price = this.get('selectedPricing.totalPriceInPLN') * (100 - this.get('promoCodeInfo.discount')) / 100;
+    var rounded = Math.round(price * 100) / 100;
+    return rounded;
   }.property('selectedPricing', 'promoCodeInfo'),
 
   fetchPromoCodeInfo: function (promoCode) {
@@ -38,7 +40,7 @@ export default Ember.Controller.extend({
       })
       .fail(function (error) {
         controller.set('promoCodeInfo', null);
-        controller.sendAction('error', error);
+        controller.send('error', error);
       })
       .always(function () {
         showLoadingIndicator(false);
@@ -119,7 +121,7 @@ export default Ember.Controller.extend({
           }
         })
         .fail(function (error) {
-          controller.sendAction('error', error);
+          controller.send('error', error);
         })
         .always(function () {
           showLoadingIndicator(false);

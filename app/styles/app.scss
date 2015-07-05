@@ -90,7 +90,26 @@ section#buy-a-ticket {
     }
     .total-price, .dates {
       font-size: 1/1.125rem;
-      color: scale-color($codepot-green, $lightness: -20%);
+      color: scale-color($codepot-green, $lightness: -25%);
+    }
+  }
+  button {
+    &.disabled, &[disabled], &.disabled.success, &[disabled].success {
+      .total-price, .dates {
+        font-size: 1/1.125rem;
+        color: scale-color(#CCC, $lightness: -25%);
+      }
+    }
+  }
+  .summary {
+    margin-bottom: rem-calc(24);
+    span {
+      display: block;
+    }
+  }
+  .buttons {
+    button {
+      font-size: 1.125*1.125rem;
     }
   }
 }
