@@ -18,10 +18,7 @@ export default Ember.Controller.extend({
 
   promoCodeChanged: function () {
     this.set('promoCodeInfo', null);
-    var promoCode = this.get('promoCode').substring(0, 6);
-    if (promoCode.length === 6) {
-      this.fetchPromoCodeInfo(promoCode);
-    }
+    this.fetchPromoCodeInfo(this.get('promoCode'));
   }.observes('promoCode'),
 
   priceAfterDiscount: function () {
