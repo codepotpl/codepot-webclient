@@ -13,6 +13,7 @@ export default Ember.Route.extend(authenticatedRoute, {
     cdptRequest(url, 'GET')
       .then(function (response) {
         controller.set('purchase', response.purchase);
+        controller.set('priceTotal', response.purchase.priceTotal / 100);
         controller.set('paymentInfo', response.purchase.paymentInfo);
       })
       .fail(function (error) {
