@@ -10,23 +10,13 @@ export default Ember.Route.extend({
     }
   },
 
-  //TODO add prices on index
-  //setupController: function (controller) {
-  //  this.store
-  //    .find('price')
-  //    .then(function (result) {
-  //      console.log(result);
-  //    })
-  //    .catch(function (error) {
-  //      console.log(error);
-  //      //if (error.status === 401) {
-  //      //  controller.controllerFor('application').set('userData', null);
-  //      //  controller.transitionToRoute('index');
-  //      //} else {
-  //      //  this.send('error', error);
-  //      //}
-  //    });
-  //},
+  setupController: function (controller) {
+    this.store
+      .find('price')
+      .then(function (result) {
+        controller.set('prices', result);
+      });
+  },
 
   actions: {
     signIn: function () {

@@ -81,6 +81,42 @@ span.hint {
   }
 }
 
+.prices {
+  text-align: center;
+  .price-wrapper {
+    width: 100%;
+    text-align: center;
+    max-width: 370px;
+    padding: 1rem;
+    display: inline-block;
+    color: white;
+    &.active {
+      background: $codepot-green;
+    }
+    &.inactive {
+      background: #CCC;
+    }
+    span {
+      display: block;
+    }
+    .name {
+      font-size: 1.125rem;
+    }
+    .price {
+      font-size: 1.125*1.125rem;
+    }
+    .total-price, .dates {
+      font-size: 1/1.125rem;
+      color: scale-color($codepot-green, $lightness: -25%);
+    }
+    &.inactive {
+      .total-price, .dates {
+        color: scale-color(#CCC, $lightness: -25%);
+      }
+    }
+  }
+}
+
 section#buy-a-ticket {
   button {
     width: 100%;
