@@ -9,7 +9,7 @@
         <div class="row">
             <div class="small-12 medium-6 medium-centered columns">
                 <form {{action 'createPurchase' on='submit'}}>
-                    <h2>1. Select your ticket:</h2>
+                    <h2>1. Select Your Ticket</h2>
                     {{#each price in prices}}
                         <button {{bind-attr class='price.isSelected:success'}} {{action 'selectPrice' price.id}} {{bind-attr disabled='price.isDisabled'}}>
                             <span class="name">{{price.name}}</span>
@@ -18,7 +18,7 @@
                             <span class="dates">available until: {{moment price.dateTo 'YYYY-MM-DD'}}</span>
                         </button>
                     {{/each}}
-                    <h2>2. Provide promo code:</h2>
+                    <h2>2. Provide Promo Code</h2>
 
                     <p>
                         If you have a promo code please paste it below.
@@ -34,7 +34,7 @@
                     {{/if}}
 
                     {{#unless ticketIsForFree}}
-                        <h2>3. Fill Invoice Data</h2>
+                        <h2>3. Fill Invoice Data (if you want one)</h2>
                         {{input value=name type='text' placeholder='Name'}}
                         {{input value=city type='text' placeholder='City'}}
                         {{input value=street type='text' placeholder='Street'}}
