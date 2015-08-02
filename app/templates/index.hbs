@@ -8,11 +8,15 @@
 
         <div class="prices">
             {{#each price in prices}}
-                <div {{bind-attr class=":price-wrapper price.active:active:inactive"}}>
-                    <span class="name">{{price.name}}</span>
-                    <span class="price">{{price.netPriceInPln}} PLN + {{price.priceVatPercentage}}% VAT</span>
-                    <span class="total-price">total: {{price.totalPriceInPLN}} PLN</span>
-                    <span class="dates">available until: {{moment price.dateTo 'YYYY-MM-DD'}}</span>
+                <div class="row">
+                    <div class="columns">
+                        <div {{bind-attr class=":price-wrapper price.active:active:inactive"}}>
+                            <span class="name">{{price.name}}</span>
+                            <span class="price">{{price.netPriceInPln}} PLN + {{price.priceVatPercentage}}% VAT</span>
+                            <span class="total-price">total: {{price.totalPriceInPLN}} PLN</span>
+                            <span class="dates">available until: {{moment price.dateTo 'YYYY-MM-DD'}}</span>
+                        </div>
+                    </div>
                 </div>
             {{/each}}
         </div>
