@@ -29,7 +29,7 @@ export default Ember.Route.extend(authenticatedRoute, {
             return upsert(controller.store, 'price', price);
           });
         var activePrices = prices.filter(function (price) {
-          return price.active;
+          return price.get('active');
         });
         if (activePrices.length > 0) {
           activePrices[0].isSelected = true;
