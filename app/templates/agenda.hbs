@@ -1,0 +1,103 @@
+<section id="agenda">
+    <div class="row">
+        <div class="columns">
+            <h1>Agenda</h1>
+
+            <div class="search-bar">
+                {{input value=searchText placeholder='What are you looking for?'}}
+                <button {{action 'filterWorkshops'}}>S</button>
+            </div>
+
+            <h2>Day 1</h2>
+
+            <h3>Friday 29th august</h3>
+
+            <button class="event" disabled>
+                <h1><i class="fa fa-angle-down"></i> Registration</h1>
+                <span>08:00-09:00</span>
+            </button>
+            <button class="event" disabled>
+                <h1><i class="fa fa-angle-down"></i> Opening</h1>
+                <span>08:00-09:00</span>
+            </button>
+            <button {{bind-attr class=':event day1slot1workshopsVisible:selected'}} {{action 'toggleShowDay1slot1workshops'}}>
+                <h1><i class="fa fa-angle-down"></i> Workshops</h1>
+                <span>08:00-09:00</span>
+            </button>
+            <div id="day1slot1workshops" {{bind-attr class='day1slot1workshopsVisible:visible'}} >
+                <div class="row">
+                    {{#each workshop in day1slot1workshops}}
+                        <div class="small-12 medium-6 large-4 columns">
+                            <button class="workshop">
+                                {{#each mentor in workshop.mentors}}
+                                    <span class="mentor">{{mentor.firstName}} {{mentor.lastName}}</span>
+                                {{/each}}
+
+                                <h1>{{workshop.title}}</h1>
+
+                                {{#each tag in workshop.tags}}
+                                    <span class="mentor">{{tag.name}}</span>
+                                {{/each}}
+                            </button>
+                        </div>
+                    {{/each}}
+                </div>
+            </div>
+            <div class="event">
+                <h1>Coffe Break</h1>
+                <span>08:00-09:00</span>
+            </div>
+            <div class="event">
+                <h1>Workshops</h1>
+                <span>08:00-09:00</span>
+            </div>
+            <div class="event">
+                <h1>Lunch</h1>
+                <span>08:00-09:00</span>
+            </div>
+            <div class="event">
+                <h1>Workshops</h1>
+                <span>08:00-09:00</span>
+            </div>
+
+            <h2>Day 2</h2>
+
+            <h3>Saturday 30th august</h3>
+
+            <div class="event">
+                <h1>Registration</h1>
+                <span>08:00-09:00</span>
+            </div>
+            <div class="event">
+                <h1>Opening</h1>
+                <span>08:00-09:00</span>
+            </div>
+            <div class="event">
+                <h1>Workshops</h1>
+                <span>08:00-09:00</span>
+            </div>
+            <div class="event">
+                <h1>Coffe Break</h1>
+                <span>08:00-09:00</span>
+            </div>
+            <div class="event">
+                <h1>Workshops</h1>
+                <span>08:00-09:00</span>
+            </div>
+            <div class="event">
+                <h1>Lunch</h1>
+                <span>08:00-09:00</span>
+            </div>
+            <div class="event">
+                <h1>Workshops</h1>
+                <span>08:00-09:00</span>
+            </div>
+
+            {{#each workshop in workshops}}
+                {{workshop.title}}
+            {{/each}}
+        </div>
+    </div>
+</section>
+
+

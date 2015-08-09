@@ -15,4 +15,5 @@ export default Router.map(function() {
   this.route('dashboard');
   this.route('buy-a-ticket');
   this.route('check-payment-status');
+  this.route('agenda');
 });

@@ -53,7 +53,7 @@ module.exports = function(environment) {
   }
 
   console.info('Loading environment variables.');
-  ENV.API_HOST = process.env.API_HOST || 'http://192.168.59.103:8080';
+  ENV.API_HOST = process.env.API_HOST || 'https://backend.codepot.pl:8443';
   console.info('API_HOST=' + ENV.API_HOST);
   ENV.BASE_URL = process.env.BASE_URL || 'http://localhost:4200';
   console.info('BASE_URL=' + ENV.BASE_URL);
