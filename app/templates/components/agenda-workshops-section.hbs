@@ -1,0 +1,48 @@
+<div class="agenda-workshops-section">
+    <button {{bind-attr class=':event expanded:selected hide:hidden'}} {{bind-attr disabled=noWorkshops}} {{action 'toggleExpanded'}}>
+        <h1><i class="fa fa-angle-down"></i> {{name}}</h1>
+        <span>{{time}}</span>
+        <div {{bind-attr class=':no-workshop-found noWorkshops:visible'}}>
+            no workshops found
+        </div>
+    </button>
+    <div {{bind-attr class=':workshop-list expanded:visible'}}>
+        <div class="row" data-equalizer>
+            {{#each workshop in workshops}}
+                <div class="small-12 medium-6 large-4 columns" data-equalizer-watch>
+                    <button class="workshop" {{action 'showWorkshopDetails' workshop}}>
+                        {{#each mentor in workshop.mentors}}
+                            <span class="mentor">{{mentor.firstName}} {{mentor.lastName}}</span>
+                        {{/each}}
+
+                        <h1>{{workshop.title}}</h1>
+
+                        <span class="room">room: {{workshop.room}}</span>
+
+                        <div class="tags">
+                            {{#each tag in workshop.tags}}
+                                <span>{{tag.name}}</span>
+                            {{/each}}
+                        </div>
+                    </button>
+                    <div {{bind-attr id=workshop.id}} class="reveal-modal" data-reveal aria-labelledby="modalTitle"
+                                                      aria-hidden="true" role="dialog">
+                        <h1>{{workshop.title}}</h1>
+
+                        {{#each mentor in workshop.mentors}}
+                            <span class="mentor">{{mentor.firstName}} {{mentor.lastName}}</span>
+                        {{/each}}
+
+                        {{#each tag in workshop.tags}}
+                            <span class="mentor">{{tag.name}}</span>
+                        {{/each}}
+
+                        {{markdown-to-html markdown=workshop.description}}
+
+                        <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+    </div>
+</div>

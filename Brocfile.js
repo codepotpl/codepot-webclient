@@ -12,6 +12,8 @@ var app = new EmberApp({
 
 app.import('bower_components/foundation/js/foundation.js');
 app.import('bower_components/foundation/js/foundation/foundation.topbar.js');
+app.import('bower_components/foundation/js/foundation/foundation.reveal.js');
+app.import('bower_components/foundation/js/foundation/foundation.equalizer.js');
 
 // Use `app.import` to add additional libraries to the generated
 // output files.
