@@ -53,6 +53,10 @@
             </div>
             <button class="success" {{bind-attr disabled=signInButtonDisabled}}>SIGN IN</button>
         </form>
+        <span class="hint reset-password">
+            Can't sign in? {{#link-to 'reset-password'}}Reset password here{{/link-to}}.
+        </span>
+
 
         <h2>More...</h2>
 

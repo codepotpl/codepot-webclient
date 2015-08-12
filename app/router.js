@@ -7,6 +7,11 @@ var Router = Ember.Router.extend({
 
 export default Router.map(function() {
   this.route('terms-of-service');
+  this.route('reset-password', function() {
+    this.route('email-sent');
+    this.route('provide-new-password', {path: '/:hash'});
+    this.route('success');
+  });
   this.route('dashboard');
   this.route('buy-a-ticket');
   this.route('check-payment-status');

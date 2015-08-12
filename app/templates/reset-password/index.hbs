@@ -1,0 +1,14 @@
+<div class="row">
+    <div class="columns">
+        <h1>Reset Password</h1>
+
+        <p>To reset the password enter your e-mail address below:</p>
+
+        <form {{action "resetPassword" on="submit"}}>
+            <div>
+                {{input value=email type='email' placeholder='E-Mail Address'}}
+            </div>
+            <button class="success" {{bind-attr disabled=buttonDisabled}}>RESET PASSWORD</button>
+        </form>
+    </div>
+</div>
