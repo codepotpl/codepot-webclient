@@ -39,9 +39,5 @@ export default Ember.Route.extend(authenticatedRoute, {
       .always(function () {
         showLoadingIndicator(false);
       });
-  },
-
-  activate: function () {
-    console.log('ACTIVATE');
   }
 });
