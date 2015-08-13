@@ -5,7 +5,9 @@
 
             <div class="search-bar">
                 {{input value=searchText placeholder='What are you looking for?'}}
-                <button {{action 'filterWorkshops'}}><i class="fa fa-search"></i></button>
+                <button {{action 'filterWorkshops'}}>
+                    <div class="flex"><i class="fa fa-search"></i></div>
+                </button>
             </div>
 
             <h2>Day 1</h2>
@@ -13,27 +15,35 @@
             <h3>Friday 29th August</h3>
 
             <button {{bind-attr class=':event filteredWorkshopsOnly:hidden'}} disabled>
-                <h1><i class="fa fa-angle-down"></i> Registration</h1>
-                <span>08:00-09:00</span>
+                <div class="flex">
+                    <h1><i class="fa fa-angle-down"></i> Registration</h1>
+                    <span>08:00-09:00</span>
+                </div>
             </button>
 
             <button {{bind-attr class=':event filteredWorkshopsOnly:hidden'}} disabled>
-                <h1><i class="fa fa-angle-down"></i> Opening</h1>
-                <span>08:00-09:00</span>
+                <div class="flex">
+                    <h1><i class="fa fa-angle-down"></i> Opening</h1>
+                    <span>08:00-09:00</span>
+                </div>
             </button>
 
             {{agenda-workshops-section workshops=day1slot1workshops name='Workshops I' time='08:00-09:00' parentController=this}}
 
             <button {{bind-attr class=':event filteredWorkshopsOnly:hidden'}} disabled>
-                <h1><i class="fa fa-angle-down"></i> Coffee Break</h1>
-                <span>08:00-09:00</span>
+                <div class="flex">
+                    <h1><i class="fa fa-angle-down"></i> Coffee Break</h1>
+                    <span>08:00-09:00</span>
+                </div>
             </button>
 
             {{agenda-workshops-section workshops=day1slot2workshops name='Workshops II' time='08:00-09:00' parentController=this}}
 
             <button {{bind-attr class=':event filteredWorkshopsOnly:hidden'}} disabled>
-                <h1><i class="fa fa-angle-down"></i> Lunch</h1>
-                <span>08:00-09:00</span>
+                <div class="flex">
+                    <h1><i class="fa fa-angle-down"></i> Lunch</h1>
+                    <span>08:00-09:00</span>
+                </div>
             </button>
 
             {{agenda-workshops-section workshops=day1slot3workshops name='Workshops III' time='08:00-09:00' parentController=this}}
@@ -43,27 +53,35 @@
             <h3>Saturday 30th August</h3>
 
             <button {{bind-attr class=':event filteredWorkshopsOnly:hidden'}} disabled>
-                <h1><i class="fa fa-angle-down"></i> Registration</h1>
-                <span>08:00-09:00</span>
+                <div class="flex">
+                    <h1><i class="fa fa-angle-down"></i> Registration</h1>
+                    <span>08:00-09:00</span>
+                </div>
             </button>
 
             <button {{bind-attr class=':event filteredWorkshopsOnly:hidden'}} disabled>
-                <h1><i class="fa fa-angle-down"></i> Opening</h1>
-                <span>08:00-09:00</span>
+                <div class="flex">
+                    <h1><i class="fa fa-angle-down"></i> Opening</h1>
+                    <span>08:00-09:00</span>
+                </div>
             </button>
 
             {{agenda-workshops-section workshops=day2slot1workshops name='Workshops I' time='08:00-09:00' parentController=this}}
 
             <button {{bind-attr class=':event filteredWorkshopsOnly:hidden'}} disabled>
-                <h1><i class="fa fa-angle-down"></i> Coffee Break</h1>
-                <span>08:00-09:00</span>
+                <div class="flex">
+                    <h1><i class="fa fa-angle-down"></i> Coffee Break</h1>
+                    <span>08:00-09:00</span>
+                </div>
             </button>
 
             {{agenda-workshops-section workshops=day2slot2workshops name='Workshops II' time='08:00-09:00' parentController=this}}
 
             <button {{bind-attr class=':event filteredWorkshopsOnly:hidden'}} disabled>
-                <h1><i class="fa fa-angle-down"></i> Lunch</h1>
-                <span>08:00-09:00</span>
+                <div class="flex">
+                    <h1><i class="fa fa-angle-down"></i> Lunch</h1>
+                    <span>08:00-09:00</span>
+                </div>
             </button>
 
             {{agenda-workshops-section workshops=day2slot3workshops name='Workshops III' time='08:00-09:00' parentController=this}}

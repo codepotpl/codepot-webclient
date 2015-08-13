@@ -222,6 +222,14 @@ section#agenda {
     font-size: 1 * 1.25rem;
   }
 
+  button .flex {
+    width: 100%;
+    height: 100%;
+    @extend %flexbox;
+    @include align-items(center);
+    @include justify-content(center);
+  }
+
   .search-bar {
     @extend %flexbox;
     input {
@@ -229,10 +237,6 @@ section#agenda {
       margin: 0;
     }
     button {
-      @include flex-shrink(0);
-      @extend %flexbox;
-      @include align-items(center);
-      @include justify-content(center);
       height: rem-calc(37);
       width: rem-calc(37);
       margin: 0;
@@ -241,7 +245,7 @@ section#agenda {
     }
   }
 
-  .event {
+  button.event {
     $disabled-bg-color: #7FEAB9;
     $normal-bg-color: $codepot-green;
     $selected-bg-color: darken(green, 10%);
@@ -249,11 +253,14 @@ section#agenda {
     width: 100%;
     padding: 1rem 0.5rem;
     margin: 0.5rem 0;
-    @extend %flexbox;
-    @include align-items(baseline);
     background-color: $normal-bg-color;
     box-shadow: 1px 1px darken($normal-bg-color, 20%);
     position: relative;
+
+    .flex {
+      @extend %flexbox;
+      @include align-items(baseline);
+    }
 
     h1 {
       @include flex-grow(1);
