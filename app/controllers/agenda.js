@@ -25,6 +25,10 @@ export default Ember.Controller.extend({
     return this.filterWorkshopsByDayAndTimeSlotOrder('FIRST', 2);
   }.property('workshops'),
 
+  day1slot4workshops: function () {
+    return this.filterWorkshopsByDayAndTimeSlotOrder('FIRST', 3);
+  }.property('workshops'),
+
   day2slot1workshops: function () {
     return this.filterWorkshopsByDayAndTimeSlotOrder('SECOND', 0);
   }.property('workshops'),
@@ -35,6 +39,10 @@ export default Ember.Controller.extend({
 
   day2slot3workshops: function () {
     return this.filterWorkshopsByDayAndTimeSlotOrder('SECOND', 2);
+  }.property('workshops'),
+
+  day2slot4workshops: function () {
+    return this.filterWorkshopsByDayAndTimeSlotOrder('SECOND', 3);
   }.property('workshops'),
 
   searchTextChanged: function () {

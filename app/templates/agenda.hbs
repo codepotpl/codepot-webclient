@@ -28,25 +28,27 @@
                 </div>
             </button>
 
-            {{agenda-workshops-section workshops=day1slot1workshops name='Workshops I' time='08:00-09:00' parentController=this}}
+            {{agenda-workshops-section workshops=day1slot1workshops name='Workshops I' time='09:15-12:30' parentController=this}}
 
             <button {{bind-attr class=':event filteredWorkshopsOnly:hidden'}} disabled>
                 <div class="flex">
                     <h1><i class="fa fa-angle-down"></i> Coffee Break</h1>
-                    <span>08:00-09:00</span>
+                    <span>12:30-12:45</span>
                 </div>
             </button>
 
-            {{agenda-workshops-section workshops=day1slot2workshops name='Workshops II' time='08:00-09:00' parentController=this}}
+            {{agenda-workshops-section workshops=day1slot2workshops name='Workshops II / Lunch' time='12:45-13:45' parentController=this}}
+
+            {{agenda-workshops-section workshops=day1slot3workshops name='Workshops III / Lunch' time='13:45-14:45' parentController=this}}
 
             <button {{bind-attr class=':event filteredWorkshopsOnly:hidden'}} disabled>
                 <div class="flex">
-                    <h1><i class="fa fa-angle-down"></i> Lunch</h1>
-                    <span>08:00-09:00</span>
+                    <h1><i class="fa fa-angle-down"></i> Coffee Break</h1>
+                    <span>14:45-15:00</span>
                 </div>
             </button>
 
-            {{agenda-workshops-section workshops=day1slot3workshops name='Workshops III' time='08:00-09:00' parentController=this}}
+            {{agenda-workshops-section workshops=day1slot4workshops name='Workshops IV' time='15:00-18:15' parentController=this}}
 
             <h2>Day 2</h2>
 
@@ -66,7 +68,7 @@
                 </div>
             </button>
 
-            {{agenda-workshops-section workshops=day2slot1workshops name='Workshops I' time='08:00-09:00' parentController=this}}
+            {{agenda-workshops-section workshops=day2slot1workshops name='Workshops I' time='09:30-12:45' parentController=this}}
 
             <button {{bind-attr class=':event filteredWorkshopsOnly:hidden'}} disabled>
                 <div class="flex">
@@ -75,16 +77,18 @@
                 </div>
             </button>
 
-            {{agenda-workshops-section workshops=day2slot2workshops name='Workshops II' time='08:00-09:00' parentController=this}}
+            {{agenda-workshops-section workshops=day2slot2workshops name='Workshops II / Lunch' time='13:00-14:00' parentController=this}}
+
+            {{agenda-workshops-section workshops=day2slot3workshops name='Workshops III / Lunch' time='14:00-15:00' parentController=this}}
 
             <button {{bind-attr class=':event filteredWorkshopsOnly:hidden'}} disabled>
                 <div class="flex">
-                    <h1><i class="fa fa-angle-down"></i> Lunch</h1>
-                    <span>08:00-09:00</span>
+                    <h1><i class="fa fa-angle-down"></i> Coffee Break</h1>
+                    <span>15:00-15:15</span>
                 </div>
             </button>
 
-            {{agenda-workshops-section workshops=day2slot3workshops name='Workshops III' time='08:00-09:00' parentController=this}}
+            {{agenda-workshops-section workshops=day2slot4workshops name='Workshops IV' time='15:15-18:30' parentController=this}}
         </div>
     </div>
 </section>
