@@ -327,7 +327,7 @@ section#agenda {
 
   button.workshop {
     width: 100%;
-    padding: 0.5rem;
+    padding: 0.5rem 0.5rem 0.3rem;
     margin-bottom: 0.5rem;
     background-color: #E6F4EE;
     box-shadow: 1px 1px darken(#E6F4EE, 20%);
@@ -346,6 +346,9 @@ section#agenda {
     h1 {
       font-size: 1 * 1.25rem;
       text-align: left;
+      @media #{$medium-up} {
+        min-height: 1.25 * 3 * 1.2rem;
+      }
     }
 
     span.room {
@@ -355,12 +358,16 @@ section#agenda {
 
     .tags {
       display: block;
+      @media #{$medium-up} {
+        min-height: 3.5rem;
+      }
       span {
         background-color: $codepot-green;
         color: white;
         line-height: 0.9;
         padding: 0.3rem 0.5rem;
         display: inline-block;
+        margin-bottom: 0.3rem;
       }
     }
   }
@@ -379,6 +386,10 @@ section#agenda {
       opacity: 1;
       margin-top: 0.5rem;
       max-height: 999px;
+    }
+
+    li {
+      padding-bottom: rem-calc(14);
     }
   }
 }

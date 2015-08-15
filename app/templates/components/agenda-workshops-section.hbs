@@ -10,9 +10,9 @@
         </div>
     </button>
     <div {{bind-attr class=':workshop-list expanded:visible'}}>
-        <div class="row" data-equalizer>
+        <ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3">
             {{#each workshop in workshops}}
-                <div class="small-12 medium-6 large-4 columns" data-equalizer-watch>
+                <li>
                     <button class="workshop" {{action 'showWorkshopDetails' workshop}}>
                         {{#each mentor in workshop.mentors}}
                             <span class="mentor">{{mentor.firstName}} {{mentor.lastName}}</span>
@@ -44,8 +44,8 @@
 
                         <a class="close-reveal-modal" aria-label="Close">&#215;</a>
                     </div>
-                </div>
+                </li>
             {{/each}}
-        </div>
+        </ul>
     </div>
 </div>

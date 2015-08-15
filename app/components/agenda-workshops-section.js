@@ -18,6 +18,11 @@ export default Ember.Component.extend({
 
   actions: {
     toggleExpanded: function () {
+      var height = 0;
+      if (!this.get('expanded')) {
+        height = this.$('.workshop-list ul').height();
+      }
+      this.$('.workshop-list').css('max-height', height + 'px');
       this.set('expanded', !this.get('expanded'));
     },
 
