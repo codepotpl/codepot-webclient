@@ -15,7 +15,7 @@
                 <li>
                     <button class="workshop" {{action 'showWorkshopDetails' workshop}}>
                         {{#each mentor in workshop.mentors}}
-                            <span class="mentor">{{mentor.firstName}} {{mentor.lastName}}</span>
+                            <span {{bind-attr class=':mentor mentor.lastInList:no-comma'}}>{{mentor.firstName}} {{mentor.lastName}}</span>
                         {{/each}}
 
                         <h1>{{workshop.title}}</h1>
@@ -24,23 +24,28 @@
 
                         <div class="tags">
                             {{#each tag in workshop.tags}}
-                                <span>{{tag.name}}</span>
+                                <span class="tag">{{tag.name}}</span>
                             {{/each}}
                         </div>
                     </button>
-                    <div {{bind-attr id=workshop.id}} class="reveal-modal" data-reveal aria-labelledby="modalTitle"
-                                                      aria-hidden="true" role="dialog">
+                    <div {{bind-attr id=workshop.id}} class="reveal-modal workshop" data-reveal aria-hidden="true" role="dialog">
                         <h1>{{workshop.title}}</h1>
 
-                        {{#each mentor in workshop.mentors}}
-                            <span class="mentor">{{mentor.firstName}} {{mentor.lastName}}</span>
-                        {{/each}}
+                        <div class="tags">
+                            {{#each tag in workshop.tags}}
+                                <span class="tag">{{tag.name}}</span>
+                            {{/each}}
+                        </div>
 
-                        {{#each tag in workshop.tags}}
-                            <span class="mentor">{{tag.name}}</span>
-                        {{/each}}
+                        <span class="room">room: {{workshop.room}} ({{workshop.startTimeDay}} {{workshop.startTimeHour}}-{{workshop.endTimeHour}})</span>
 
                         {{markdown-to-html markdown=workshop.description}}
+
+                        <h2>Mentors:</h2>
+
+                        {{#each mentor in workshop.mentors}}
+                            <span {{bind-attr class=':mentor mentor.lastInList:no-comma'}}>{{mentor.firstName}} {{mentor.lastName}}</span>
+                        {{/each}}
 
                         <a class="close-reveal-modal" aria-label="Close">&#215;</a>
                     </div>

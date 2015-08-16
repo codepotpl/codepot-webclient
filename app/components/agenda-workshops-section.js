@@ -6,6 +6,11 @@ export default Ember.Component.extend({
 
   workshopsChanged: function () {
     this.set('expanded', false);
+    this.get('workshops').forEach(function (workshop) {
+      workshop.get('mentors').forEach(function (mentor, index, mentors) {
+        mentor.set('lastInList', index === mentors.length - 1);
+      });
+    });
   }.observes('workshops'),
 
   noWorkshops: function () {

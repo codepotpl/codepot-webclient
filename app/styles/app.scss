@@ -31,6 +31,8 @@ $success-color: $codepot-green;
 @import "foundation/components/grid";
 @import "foundation/components/block-grid";
 @import "foundation/components/visibility";
+
+$reveal-max-width: rem-calc(660);
 @import "foundation/components/reveal";
 @import "foundation/components/forms";
 $topbar-bg-color: $codepot-green;
@@ -200,6 +202,26 @@ section#check-payment-status {
   }
 }
 
+span.tag {
+  background-color: $codepot-green;
+  color: white !important;
+  line-height: 0.9;
+  padding: 0.3rem 0.5rem;
+  display: inline-block;
+  margin-bottom: 0.3rem;
+}
+
+span.mentor {
+  &::after {
+    content: ',';
+  }
+  &.no-comma {
+    &::after {
+      content: '';
+    }
+  }
+}
+
 section#agenda {
   margin-top: 1rem;
 
@@ -361,14 +383,6 @@ section#agenda {
       @media #{$medium-up} {
         min-height: 3.5rem;
       }
-      span {
-        background-color: $codepot-green;
-        color: white;
-        line-height: 0.9;
-        padding: 0.3rem 0.5rem;
-        display: inline-block;
-        margin-bottom: 0.3rem;
-      }
     }
   }
 }
@@ -391,6 +405,12 @@ section#agenda {
     li {
       padding-bottom: rem-calc(14);
     }
+  }
+}
+
+.reveal-modal.workshop {
+  .tags {
+    margin-bottom: 0.5rem;
   }
 }
 
