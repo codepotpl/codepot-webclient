@@ -19,7 +19,9 @@ export default Ember.Component.extend({
       height = this.$('.workshop-list ul').height();
     }
     this.$('.workshop-list').css('max-height', height + 'px');
-    this.set('expanded', !this.get('expanded'));
+    run.later(this, function() {
+      this.set('expanded', !this.get('expanded'));
+    }, 500);
   },
 
   noWorkshops: function () {
