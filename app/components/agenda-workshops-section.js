@@ -5,7 +5,7 @@ export default Ember.Component.extend({
   expanded: false,
 
   workshopsChanged: function () {
-    this.toggleExpanded();
+    this.setExpanded(false);
     this.get('workshops').forEach(function (workshop) {
       workshop.get('mentors').forEach(function (mentor, index, mentors) {
         mentor.set('lastInList', index === mentors.length - 1);
@@ -13,15 +13,10 @@ export default Ember.Component.extend({
     });
   }.observes('workshops'),
 
-  toggleExpanded: function () {
-    var height = 0;
-    if (!this.get('expanded')) {
-      height = this.$('.workshop-list ul').height();
-    }
+  setExpanded: function (expanded) {
+    var height = expanded ? this.$('.workshop-list ul').height() : 0;
     this.$('.workshop-list').css('max-height', height + 'px');
-    run.later(this, function() {
-      this.set('expanded', !this.get('expanded'));
-    }, 500);
+    this.set('expanded', expanded);
   },
 
   noWorkshops: function () {
@@ -34,7 +29,7 @@ export default Ember.Component.extend({
 
   actions: {
     toggleExpanded: function () {
-      this.toggleExpanded();
+      this.setExpanded(!this.get('expanded'));
     },
 
     showWorkshopDetails: function (workshop) {
