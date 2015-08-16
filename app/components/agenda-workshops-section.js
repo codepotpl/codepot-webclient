@@ -5,7 +5,7 @@ export default Ember.Component.extend({
   expanded: false,
 
   workshopsChanged: function () {
-    this.set('expanded', false);
+    this.toggleExpanded();
     this.get('workshops').forEach(function (workshop) {
       workshop.get('mentors').forEach(function (mentor, index, mentors) {
         mentor.set('lastInList', index === mentors.length - 1);
