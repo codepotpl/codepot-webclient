@@ -13,6 +13,15 @@ export default Ember.Component.extend({
     });
   }.observes('workshops'),
 
+  toggleExpanded: function () {
+    var height = 0;
+    if (!this.get('expanded')) {
+      height = this.$('.workshop-list ul').height();
+    }
+    this.$('.workshop-list').css('max-height', height + 'px');
+    this.set('expanded', !this.get('expanded'));
+  },
+
   noWorkshops: function () {
     return this.get('workshops').length === 0;
   }.property('workshops'),
@@ -23,12 +32,7 @@ export default Ember.Component.extend({
 
   actions: {
     toggleExpanded: function () {
-      var height = 0;
-      if (!this.get('expanded')) {
-        height = this.$('.workshop-list ul').height();
-      }
-      this.$('.workshop-list').css('max-height', height + 'px');
-      this.set('expanded', !this.get('expanded'));
+      this.toggleExpanded();
     },
 
     showWorkshopDetails: function (workshop) {
