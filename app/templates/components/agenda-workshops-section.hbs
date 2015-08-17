@@ -18,7 +18,7 @@
                             <span {{bind-attr class=':mentor mentor.lastInList:no-comma'}}>{{mentor.firstName}} {{mentor.lastName}}</span>
                         {{/each}}
 
-                        <h1>{{workshop.title}}</h1>
+                        <h1>{{workshop.title}}{{#if workshop.isLongerThanOneTimeSlot}} ({{agenda-workshop-human-index workshop day timeSlot}}/{{workshop.numberOfTimeSlots}}){{/if}}</h1>
 
                         <span class="room">room: {{workshop.room}}</span>
 

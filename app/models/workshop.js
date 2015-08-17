@@ -19,7 +19,7 @@ export default DS.Model.extend({
         startTime = timeSlot.get('startTime');
       } else {
         if (moment(timeSlot.get('startTime')) < moment(startTime)) {
-        startTime = timeSlot.get('startTime');
+          startTime = timeSlot.get('startTime');
         }
       }
     });
@@ -40,15 +40,23 @@ export default DS.Model.extend({
     return endTime;
   }.property('timeSlots.@each'),
 
-  startTimeDay:function() {
+  startTimeDay: function () {
     return moment(this.get('startTime')).format('dddd');
   }.property('startTime'),
 
-  startTimeHour:function() {
+  startTimeHour: function () {
     return moment(this.get('startTime')).format('HH:mm');
   }.property('startTime'),
 
-  endTimeHour:function() {
+  endTimeHour: function () {
     return moment(this.get('endTime')).format('HH:mm');
-  }.property('endTime')
+  }.property('endTime'),
+
+  isLongerThanOneTimeSlot: function () {
+    return this.get('timeSlots').length > 1;
+  }.property('timeSlots'),
+
+  numberOfTimeSlots: function () {
+    return this.get('timeSlots').length;
+  }.property('timeSlots')
 });

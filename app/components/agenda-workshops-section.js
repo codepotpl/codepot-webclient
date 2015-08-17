@@ -1,8 +1,22 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
+  allWorkshops: [],
   workshops: [],
   expanded: false,
+
+  filterWorkshopsByDayAndTimeSlotOrder: function (day, order) {
+    return this.get('allWorkshops').filter(function (workshop) {
+      var timeSlots = workshop.get('timeSlots').filter(function (timeSlot) {
+        return timeSlot.get('day') === day && timeSlot.get('order') === order;
+      });
+      return timeSlots.length > 0;
+    });
+  },
+
+  allWorkshopsChanged: function () {
+    this.set('workshops', this.filterWorkshopsByDayAndTimeSlotOrder(this.get('day'), this.get('timeSlot')));
+  }.observes('allWorkshops'),
 
   workshopsChanged: function () {
     this.setExpanded(false);
