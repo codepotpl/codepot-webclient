@@ -29,6 +29,15 @@ export default Ember.Controller.extend({
     return this.filterWorkshopsByDayAndTimeSlotOrder('FIRST', 3);
   }.property('workshops'),
 
+  noWorkshopsFoundDay1: function () {
+    return !(
+      this.get('day1slot1workshops').length +
+      this.get('day1slot2workshops').length +
+      this.get('day1slot3workshops').length +
+      this.get('day1slot4workshops').length
+    );
+  }.property('day1slot1workshops', 'day1slot2workshops', 'day1slot3workshops', 'day1slot4workshops'),
+
   day2slot1workshops: function () {
     return this.filterWorkshopsByDayAndTimeSlotOrder('SECOND', 0);
   }.property('workshops'),
@@ -44,6 +53,15 @@ export default Ember.Controller.extend({
   day2slot4workshops: function () {
     return this.filterWorkshopsByDayAndTimeSlotOrder('SECOND', 3);
   }.property('workshops'),
+
+  noWorkshopsFoundDay2: function () {
+    return !(
+      this.get('day2slot1workshops').length +
+      this.get('day2slot2workshops').length +
+      this.get('day2slot3workshops').length +
+      this.get('day2slot4workshops').length
+    );
+  }.property('day2slot1workshops', 'day2slot2workshops', 'day2slot3workshops', 'day2slot4workshops'),
 
   searchTextChanged: function () {
     Ember.run.debounce(this, this.filterWorkshops, 1000);

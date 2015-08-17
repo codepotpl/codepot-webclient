@@ -14,6 +14,10 @@
 
             <h3>Friday 28th August</h3>
 
+            <div {{bind-attr class=':no-workshops-found noWorkshopsFoundDay1::hidden'}}>
+                No workshops found for this day.
+            </div>
+
             <button {{bind-attr class=':event filteredWorkshopsOnly:hidden'}} disabled>
                 <div class="flex">
                     <h1><i class="fa fa-angle-down"></i> Registration</h1>
@@ -53,6 +57,10 @@
             <h2>Day 2</h2>
 
             <h3>Saturday 29th August</h3>
+
+            <div {{bind-attr class=':no-workshops-found noWorkshopsFoundDay2::hidden'}}>
+                No workshops found for this day.
+            </div>
 
             <button {{bind-attr class=':event filteredWorkshopsOnly:hidden'}} disabled>
                 <div class="flex">
