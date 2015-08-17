@@ -54,6 +54,7 @@ export default Ember.Controller.extend({
   }.property('workshops'),
 
   filterWorkshops: function () {
+    ga('send', 'event', 'seach', 'performed', this.get('searchText'));
     this.target.send('filterWorkshops', this, this.get('searchText'));
   },
 

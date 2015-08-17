@@ -49,7 +49,13 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-
+    ENV.googleAnalytics = {
+      webPropertyId: 'UA-60029641-3'
+    };
+  } else {
+    ENV.googleAnalytics = {
+      webPropertyId: 'UA-60029641-4'
+    };
   }
 
   console.info('Loading environment variables.');
