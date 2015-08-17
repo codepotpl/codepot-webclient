@@ -1,11 +1,13 @@
 import Ember from 'ember';
 import cdptRequest from '../utils/cdpt-request';
 import upsert from '../utils/upsert';
+import showLoadingIndicator from '../utils/show-loading-indicator';
 
 export default Ember.Route.extend({
   allWorkshops: [],
 
   setupController: function (controller, model) {
+    showLoadingIndicator(true);
     var route = this;
     var url = '/api/workshops/';
     cdptRequest(url, 'GET')
@@ -26,6 +28,9 @@ export default Ember.Route.extend({
         });
         route.set('allWorkshops', workshops);
         controller.set('workshops', workshops);
+      })
+      .always(function () {
+        showLoadingIndicator(false);
       });
   },
 
@@ -36,6 +41,7 @@ export default Ember.Route.extend({
         return;
       }
 
+      showLoadingIndicator(true);
       var url = '/api/workshops/search/';
       var data = {
         query: searchText
@@ -57,6 +63,9 @@ export default Ember.Route.extend({
             return workshop;
           });
           controller.set('workshops', workshops);
+        })
+        .always(function () {
+          showLoadingIndicator(false);
         });
 
     }
