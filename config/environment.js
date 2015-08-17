@@ -50,11 +50,11 @@ module.exports = function(environment) {
 
   if (environment === 'production') {
     ENV.googleAnalytics = {
-      webPropertyId: 'UA-60029641-3'
+      webPropertyId: 'UA-60029641-4'
     };
   } else {
     ENV.googleAnalytics = {
-      webPropertyId: 'UA-60029641-4'
+      webPropertyId: 'UA-60029641-3'
     };
   }
 
