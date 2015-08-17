@@ -381,7 +381,7 @@ section#agenda {
     .tags {
       display: block;
       @media #{$medium-up} {
-        min-height: 4.5rem;
+        min-height: 4rem;
       }
     }
   }

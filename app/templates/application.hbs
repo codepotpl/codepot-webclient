@@ -3,7 +3,9 @@
         <li class="name">
             {{#link-to 'index'}}<img src="codepot-logo.png" alt=""/>{{/link-to}}
         </li>
-        <li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
+        {{#if isUserSignedInProperty}}
+            <li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
+        {{/if}}
     </ul>
 
     <section class="top-bar-section">
@@ -21,7 +23,8 @@
 <div class="row">
     <div class="columns">
         <footer>
-            Powered by Tiktalik <a href="https://tiktalik.com/" target="blank"><img src="/tiktalik-logo.png" alt="Tiktalik logo"/></a>
+            Powered by Tiktalik <a href="https://tiktalik.com/" target="blank">
+            <img src="/tiktalik-logo.png" alt="Tiktalik logo"/></a>
         </footer>
     </div>
 </div>

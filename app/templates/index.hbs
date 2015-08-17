@@ -1,4 +1,4 @@
-<div class="row" class="index">
+<div class="row index">
     <div class="small-12 medium-6 columns">
         <h1>Welcome to Codepot registration app!</h1>
 
@@ -6,20 +6,13 @@
             We have sold out all tickets, but you can still register if you have 100% discount coupon.
         </h2>
 
-        <div class="prices">
-            {{#each price in prices}}
-                <div class="row">
-                    <div class="columns">
-                        <div {{bind-attr class=":price-wrapper price.active:active:inactive"}}>
-                            <span class="name">{{price.name}}</span>
-                            <span class="price">{{price.netPriceInPln}} PLN + {{price.priceVatPercentage}}% VAT</span>
-                            <span class="total-price">total: {{price.totalPriceInPLN}} PLN</span>
-                            <span class="dates">available until: {{moment price.dateTo 'YYYY-MM-DD'}}</span>
-                        </div>
-                    </div>
-                </div>
-            {{/each}}
-        </div>
+        <p>
+            To show online agenda press button below.
+        </p>
+
+        {{#link-to 'agenda'}}
+                <button class="success">SHOW AGENDA</button>
+        {{/link-to}}
     </div>
 
     <div class="small-12 medium-6 columns">
