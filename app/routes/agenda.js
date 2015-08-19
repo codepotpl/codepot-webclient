@@ -9,10 +9,46 @@ export default Ember.Route.extend({
   setupController: function (controller, model) {
     showLoadingIndicator(true);
     var route = this;
-    var url = '/api/workshops/';
-    cdptRequest(url, 'GET')
-      .then(function (result) {
-        var workshops = result.workshops.map(function (rawWorkshop) {
+
+    var workshopsPromise = (function () {
+      var d = Ember.$.Deferred();
+      var url = '/api/workshops/';
+      cdptRequest(url, 'GET')
+        .then(function (result) {
+          d.resolve(result);
+        })
+        .fail(function (error) {
+          d.resolve(error);
+        });
+      return d;
+    })();
+
+    var promises = {
+      workshopsPromise: workshopsPromise
+    };
+    if (this.get('controller.isSignedIn')) {
+      promises.purchasePromise = (function () {
+        var d = Ember.$.Deferred();
+        var userId = route.controller.get('controllers.application.userData').user.get('id');
+        var url = '/api/users/' + userId + '/purchase/';
+        cdptRequest(url, 'GET')
+          .then(function (response) {
+            d.resolve({purchaseComplete: response.purchase.paymentStatus === 'SUCCESS'});
+          })
+          .fail(function (error) {
+            if (error.status === 404) {
+              d.resolve({purchaseComplete: false});
+            } else {
+              d.resolve(error);
+            }
+          });
+        return d;
+      })();
+    }
+
+    Ember.RSVP.hash(promises)
+      .then(function (results) {
+        var workshops = results.workshopsPromise.workshops.map(function (rawWorkshop) {
           var timeSlots = rawWorkshop.timeSlots.map(function (rawTimeSlot) {
             return upsert(controller.store, 'time-slot', rawTimeSlot);
           });
@@ -28,8 +64,15 @@ export default Ember.Route.extend({
         });
         route.set('allWorkshops', workshops);
         controller.set('workshops', workshops);
+
+        if (results.purchasePromise) {
+          controller.set('purchaseComplete', results.purchasePromise.purchaseComplete);
+        }
       })
-      .always(function () {
+      .catch(function (error) {
+        console.error(error);
+      })
+      .finally(function () {
         showLoadingIndicator(false);
       });
   },
@@ -67,7 +110,6 @@ export default Ember.Route.extend({
         .always(function () {
           showLoadingIndicator(false);
         });
-
     }
   }
 });

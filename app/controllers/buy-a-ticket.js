@@ -8,7 +8,7 @@ export default Ember.Controller.extend({
 
   selectedPricing: function () {
     return this.get('prices').filter(function (price) {
-      return price.isSelected;
+      return price.get('isSelected');
     })[0];
   }.property('prices.@each.isSelected'),
 

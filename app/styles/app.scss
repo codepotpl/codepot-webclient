@@ -206,6 +206,27 @@ span.mentor {
   }
 }
 
+.info {
+  text-align: center;
+  padding: 1rem;
+  background: #F3F3F3;
+  border-radius: 4px;
+  margin-top: 1rem;
+  color: #5F5F5F;
+  font-size: 0.8rem;
+
+  p {
+    margin-top: 0;
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+
+  button {
+    margin: 0.5rem 0 0;
+  }
+}
+
 section#agenda {
   margin-top: 1rem;
 
@@ -228,12 +249,15 @@ section#agenda {
     font-size: 1 * 1.25rem;
   }
 
+  .selected-workshops {
+    h2 {
+      text-align: left;
+      font-size: 1*1.25rem;
+    }
+  }
+
   .no-workshops-found {
-    text-align: center;
-    padding: 2rem;
-    background: #F1F1F1;
-    border-radius: 4px;
-    margin-top: 1rem;
+    @extend .info;
 
     &.hidden {
       display: none;
@@ -416,6 +440,10 @@ section#agenda {
 .reveal-modal.workshop {
   .tags {
     margin-bottom: 0.5rem;
+  }
+  button {
+    display: block;
+    margin-top: 1rem;
   }
 }
 

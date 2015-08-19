@@ -10,6 +10,46 @@
                 </button>
             </div>
 
+            {{#unless isSignedIn}}
+                <div class="info">
+                    <p>
+                        Please sign in before selecting workshops.
+                    </p>
+                    {{#link-to 'index'}}
+                        <button class="success">SIGN IN</button>
+                    {{/link-to}}
+                </div>
+            {{/unless}}
+
+            {{#if showPurchaseNotCompletedInfo}}
+                <div class="info">
+                    <p>
+                        Please finish your purchase before selecting workshops.
+                    </p>
+                    {{#link-to 'buy-a-ticket'}}
+                        <button class="success">GO TO DASHBOARD</button>
+                    {{/link-to}}
+                </div>
+            {{/if}}
+
+            {{#if canSelectWorkshops}}
+                <div class="selected-workshops">
+                    <h2>Workshops you have selected:</h2>
+                    {{#if selectedWorkshops}}
+                        {{#each workshop in selectedWorkshops}}
+                            ({{workshop.startTimeDay}} {{workshop.startTimeHour}}-{{workshop.endTimeHour}}) {{workshop.title}}<br>
+                        {{/each}}
+                    {{else}}
+                        <div class="info">
+                            <p>
+                                No workshops selected.
+                            </p>
+                        </div>
+                    {{/if}}
+
+                </div>
+            {{/if}}
+
             <h2>Day 1</h2>
 
             <h3>Friday 28th August</h3>
@@ -32,7 +72,7 @@
                 </div>
             </button>
 
-            {{agenda-workshops-section allWorkshops=workshops day='FIRST' timeSlot=0 name='Workshops I' time='09:15-12:30' parentController=this}}
+            {{agenda-workshops-section allWorkshops=workshops day='FIRST' timeSlot=0 selectWorkshop='selectWorkshop' name='Workshops I' time='09:15-12:30' parentController=this}}
 
             <button {{bind-attr class=':event filteredWorkshopsOnly:hidden'}} disabled>
                 <div class="flex">
@@ -41,9 +81,9 @@
                 </div>
             </button>
 
-            {{agenda-workshops-section allWorkshops=workshops day='FIRST' timeSlot=1 name='Workshops II / Lunch' time='12:45-13:45' parentController=this}}
+            {{agenda-workshops-section allWorkshops=workshops day='FIRST' timeSlot=1 selectWorkshop='selectWorkshop' name='Workshops II / Lunch' time='12:45-13:45' parentController=this}}
 
-            {{agenda-workshops-section allWorkshops=workshops day='FIRST' timeSlot=2 name='Workshops III / Lunch' time='13:45-14:45' parentController=this}}
+            {{agenda-workshops-section allWorkshops=workshops day='FIRST' timeSlot=2 selectWorkshop='selectWorkshop' name='Workshops III / Lunch' time='13:45-14:45' parentController=this}}
 
             <button {{bind-attr class=':event filteredWorkshopsOnly:hidden'}} disabled>
                 <div class="flex">
@@ -52,7 +92,7 @@
                 </div>
             </button>
 
-            {{agenda-workshops-section allWorkshops=workshops day='FIRST' timeSlot=3 name='Workshops IV' time='15:00-18:15' parentController=this}}
+            {{agenda-workshops-section allWorkshops=workshops day='FIRST' timeSlot=3 selectWorkshop='selectWorkshop' name='Workshops IV' time='15:00-18:15' parentController=this}}
 
             <h2>Day 2</h2>
 
@@ -69,7 +109,7 @@
                 </div>
             </button>
 
-            {{agenda-workshops-section allWorkshops=workshops  day='SECOND' timeSlot=0 name='Workshops I' time='09:30-12:45' parentController=this}}
+            {{agenda-workshops-section allWorkshops=workshops  day='SECOND' timeSlot=0 selectWorkshop='selectWorkshop' name='Workshops I' time='09:30-12:45' parentController=this}}
 
             <button {{bind-attr class=':event filteredWorkshopsOnly:hidden'}} disabled>
                 <div class="flex">
@@ -78,9 +118,9 @@
                 </div>
             </button>
 
-            {{agenda-workshops-section allWorkshops=workshops day='SECOND' timeSlot=1 name='Workshops II / Lunch' time='13:00-14:00' parentController=this}}
+            {{agenda-workshops-section allWorkshops=workshops day='SECOND' timeSlot=1 selectWorkshop='selectWorkshop' name='Workshops II / Lunch' time='13:00-14:00' parentController=this}}
 
-            {{agenda-workshops-section allWorkshops=workshops day='SECOND' timeSlot=2 name='Workshops III / Lunch' time='14:00-15:00' parentController=this}}
+            {{agenda-workshops-section allWorkshops=workshops day='SECOND' timeSlot=2 selectWorkshop='selectWorkshop' name='Workshops III / Lunch' time='14:00-15:00' parentController=this}}
 
             <button {{bind-attr class=':event filteredWorkshopsOnly:hidden'}} disabled>
                 <div class="flex">
@@ -89,7 +129,7 @@
                 </div>
             </button>
 
-            {{agenda-workshops-section allWorkshops=workshops day='SECOND' timeSlot=3 name='Workshops IV' time='15:15-18:30' parentController=this}}
+            {{agenda-workshops-section allWorkshops=workshops day='SECOND' timeSlot=3 selectWorkshop='selectWorkshop' name='Workshops IV' time='15:15-18:30' parentController=this}}
         </div>
     </div>
 </section>

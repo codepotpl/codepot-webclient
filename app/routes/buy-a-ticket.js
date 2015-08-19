@@ -32,7 +32,7 @@ export default Ember.Route.extend(authenticatedRoute, {
           return price.get('active');
         });
         if (activePrices.length > 0) {
-          activePrices[0].isSelected = true;
+          activePrices[0].set('isSelected', true);
         }
         controller.set('prices', prices);
       })

@@ -58,5 +58,19 @@ export default DS.Model.extend({
 
   numberOfTimeSlots: function () {
     return this.get('timeSlots').length;
-  }.property('timeSlots')
+  }.property('timeSlots'),
+
+  collidesWithWorkshop: function (workshop) {
+    var collides = false;
+    this.get('timeSlots').forEach(function (thisTimeSlot) {
+      var thisDay = thisTimeSlot.get('day');
+      var thisOrder = thisTimeSlot.get('order');
+      workshop.get('timeSlots').forEach(function (workShopTimeSlot) {
+        if(thisDay === workShopTimeSlot.get('day') && thisOrder === workShopTimeSlot.get('order')) {
+          collides = true;
+        }
+      });
+    });
+    return collides;
+  }
 });

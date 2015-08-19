@@ -49,6 +49,10 @@ export default Ember.Component.extend({
     showWorkshopDetails: function (workshop) {
       ga('send', 'event', 'workshop details', 'displayed', workshop.get('title'));
       $('.reveal-modal#' + workshop.get('id')).foundation('reveal', 'open');
+    },
+
+    selectWorkshop: function(workshop) {
+      this.sendAction('selectWorkshop', workshop);
     }
   }
 });
