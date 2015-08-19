@@ -24,10 +24,21 @@
 
     <span class="room">room: {{workshop.room}} ({{workshop.startTimeDay}} {{workshop.startTimeHour}}-{{workshop.endTimeHour}})</span>
 
-    {{#if isThisWorkshopAlreadySelected}}
-        <button class="success" {{action 'leaveWorkshop' workshop}}>LEAVE THIS WORKSHOP</button>
+    {{#if canSelectWorkshops}}
+
+    {{#if isThisWorkshopCollidingWithLunch}}
+        <div class="info">
+            Can't select this workshop. If you would like to select this workshop, leave the workshop selected in lunch
+            time slot before.
+        </div>
     {{else}}
-        <button class="success" {{action 'selectWorkshop' workshop}}>SELECT THIS WORKSHOP</button>
+        {{#if isThisWorkshopAlreadySelected}}
+            <button class="success" {{action 'leaveWorkshop' workshop}}>LEAVE THIS WORKSHOP</button>
+        {{else}}
+            <button class="success" {{action 'selectWorkshop' workshop}}>SELECT THIS WORKSHOP</button>
+        {{/if}}
+    {{/if}}
+
     {{/if}}
 
     {{markdown-to-html markdown=workshop.description}}

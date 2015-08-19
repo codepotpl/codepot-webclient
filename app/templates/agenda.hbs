@@ -36,9 +36,21 @@
                 <div class="selected-workshops">
                     <h2>Workshops you have selected:</h2>
                     {{#if selectedWorkshops}}
-                        {{#each workshop in selectedWorkshops}}
-                            ({{workshop.startTimeDay}} {{workshop.startTimeHour}}-{{workshop.endTimeHour}}) {{workshop.title}}<br>
+                        {{#if firstDaySelectedWorkshops}}
+                        <h3>Day 1</h3>
+                        {{#each workshop in firstDaySelectedWorkshops}}
+                             ({{workshop.startTimeHour}}-{{workshop.endTimeHour}}) {{workshop.title}}<br>
                         {{/each}}
+                        {{/if}}
+                        {{#if secondDaySelectedWorkshops}}
+                            <h3>Day 2</h3>
+                            {{#each workshop in secondDaySelectedWorkshops}}
+                                ({{workshop.startTimeHour}}-{{workshop.endTimeHour}}) {{workshop.title}}<br>
+                            {{/each}}
+                        {{/if}}
+
+
+
                     {{else}}
                         <div class="info">
                             <p>

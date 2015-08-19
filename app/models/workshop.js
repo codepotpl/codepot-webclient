@@ -12,6 +12,14 @@ export default DS.Model.extend({
     return room;
   }.property('timeSlots.@each'),
 
+  day: function () {
+    var day;
+    this.get('timeSlots').forEach(function (timeSlot) {
+      day = timeSlot.get('day');
+    });
+    return day;
+  }.property('timeSlots.@each'),
+
   startTime: function () {
     var startTime;
     this.get('timeSlots').forEach(function (timeSlot) {

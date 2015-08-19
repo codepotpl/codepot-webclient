@@ -142,5 +142,17 @@ export default Ember.Controller.extend({
             showLoadingIndicator(false);
           });
       });
-  }
+  },
+
+  firstDaySelectedWorkshops: function () {
+    return this.get('selectedWorkshops').filter(function(workshop){
+      return workshop.get('day') === 'FIRST';
+    });
+  }.property('selectedWorkshops'),
+
+  secondDaySelectedWorkshops: function () {
+    return this.get('selectedWorkshops').filter(function(workshop){
+      return workshop.get('day') === 'SECOND';
+    });
+  }.property('selectedWorkshops')
 });
