@@ -1,18 +1,3 @@
-<button class="workshop" {{action 'showWorkshopDetails' workshop}}>
-    {{#each mentor in workshop.mentors}}
-        <span {{bind-attr class=':mentor mentor.lastInList:no-comma'}}>{{mentor.firstName}} {{mentor.lastName}}</span>
-    {{/each}}
-
-    <h1>{{workshop.title}}{{#if workshop.isLongerThanOneTimeSlot}} ({{agenda-workshop-human-index workshop day timeSlot}}/{{workshop.numberOfTimeSlots}}){{/if}}</h1>
-
-    <span class="room">room: {{workshop.room}}</span>
-
-    <div class="tags">
-        {{#each tag in workshop.tags}}
-            <span class="tag">{{tag.name}}</span>
-        {{/each}}
-    </div>
-</button>
 <div {{bind-attr id=workshop.id}} class="reveal-modal workshop" data-reveal aria-hidden="true" role="dialog">
     <h1>{{workshop.title}}</h1>
 

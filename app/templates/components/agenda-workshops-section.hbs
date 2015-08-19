@@ -13,6 +13,21 @@
         <ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3">
             {{#each workshop in workshops}}
                 <li>
+                    <button class="workshop" {{action 'showWorkshopDetails' workshop}}>
+                        {{#each mentor in workshop.mentors}}
+                            <span {{bind-attr class=':mentor mentor.lastInList:no-comma'}}>{{mentor.firstName}} {{mentor.lastName}}</span>
+                        {{/each}}
+
+                        <h1>{{workshop.title}}{{#if workshop.isLongerThanOneTimeSlot}} ({{agenda-workshop-human-index workshop day timeSlot}}/{{workshop.numberOfTimeSlots}}){{/if}}</h1>
+
+                        <span class="room">room: {{workshop.room}}</span>
+
+                        <div class="tags">
+                            {{#each tag in workshop.tags}}
+                                <span class="tag">{{tag.name}}</span>
+                            {{/each}}
+                        </div>
+                    </button>
                     {{render 'single-agenda-workshop' workshop}}
                 </li>
             {{/each}}
