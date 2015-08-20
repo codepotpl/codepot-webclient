@@ -307,6 +307,17 @@ section#agenda {
     .flex {
       @extend %flexbox;
       @include align-items(baseline);
+
+      & > i {
+        font-size: 1.5rem;
+        @media #{$small-only} {
+          font-size: 1rem;
+        }
+
+        &.fa-cutlery {
+          margin-right: 2px;
+        }
+      }
     }
 
     h1 {
@@ -333,10 +344,12 @@ section#agenda {
       @include transition(all 0.5s ease-in-out);
     }
     &.selected {
-      i {
-        -ms-transform: rotate(180deg);
-        -webkit-transform: rotate(180deg);
-        transform: rotate(180deg);
+      h1 {
+        i {
+          -ms-transform: rotate(180deg);
+          -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+        }
       }
     }
     &:disabled {

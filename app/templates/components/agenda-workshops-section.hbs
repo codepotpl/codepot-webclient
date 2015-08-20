@@ -2,6 +2,13 @@
     <button {{bind-attr class=':event expanded:selected hide:hidden'}} {{bind-attr disabled=noWorkshops}} {{action 'toggleExpanded'}}>
         <div class="flex">
             <h1><i class="fa fa-angle-down"></i> {{name}}</h1>
+            {{#if workshopSelectedInThisTimeSlot}}
+                <i class="fa fa-check"></i>
+            {{else}}
+                {{#if isLunchSelected}}
+                    <i class="fa fa-cutlery"></i>
+                {{/if}}
+            {{/if}}
             <span>{{time}}</span>
 
             <div {{bind-attr class=':no-workshop-found noWorkshops:visible'}}>
