@@ -103,8 +103,8 @@ export default Ember.Controller.extend({
         workshopId: parseInt(workshop.get('id'))
       };
       cdptRequest(url, 'POST', data)
-        .then(function (result) {
-          alert('You have successfully selected "' + workshop.get('title') + '".');
+        .then(function () {
+          $('.reveal-modal').foundation('reveal', 'close');
           controller.refreshSelectedWorkshops();
         })
         .always(function () {
@@ -119,7 +119,7 @@ export default Ember.Controller.extend({
       var url = '/api/users/' + userId + '/workshops/' + workshop.get('id') + '/';
       cdptRequest(url, 'DELETE')
         .then(function () {
-          alert('You have successfully left "' + workshop.get('title') + '".');
+          $('.reveal-modal').foundation('reveal', 'close');
           controller.refreshSelectedWorkshops();
         })
         .always(function () {
@@ -141,7 +141,7 @@ export default Ember.Controller.extend({
         };
         cdptRequest(url, 'POST', data)
           .then(function () {
-            alert('You have successfully selected "' + newWorkshop.get('title') + '".');
+            $('.reveal-modal').foundation('reveal', 'close');
             controller.refreshSelectedWorkshops();
           })
           .always(function () {
