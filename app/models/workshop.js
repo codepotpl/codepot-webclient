@@ -3,6 +3,9 @@ export default DS.Model.extend({
   description: DS.attr('string'),
   mentors: DS.hasMany('mentor'),
   timeSlots: DS.hasMany('time-slot'),
+  attendeesCount: DS.attr('number'),
+  maxAttendees: DS.attr('number'),
+  placesLeft: DS.attr('number'),
 
   room: function () {
     var room;
