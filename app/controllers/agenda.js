@@ -24,13 +24,13 @@ export default Ember.Controller.extend({
     var url = '/api/users/' + userId + '/workshops/' + '?nocache=' + new Date().getTime();
     cdptRequest(url, 'POST')
       .then(function (result) {
-        controller.get('workshops').forEach(function(workshop){
+        controller.get('workshops').forEach(function (workshop) {
           workshop.set('isSelected', false);
         });
         var workshops = result.workshops.map(function (rawWorkshop) {
           return controller.store.getById('workshop', rawWorkshop.id);
         });
-        workshops.forEach(function(workshop){
+        workshops.forEach(function (workshop) {
           workshop.set('isSelected', true);
         });
         controller.set('selectedWorkshops', workshops);
@@ -135,7 +135,7 @@ export default Ember.Controller.extend({
     var url = '/api/users/' + userId + '/workshops/' + oldWorkshop.get('id') + '/';
     cdptRequest(url, 'DELETE')
       .then(function () {
-        var url = '/api/users/' + userId + '/workshops/';
+        var url = '/api/users/' + userId + '/workshops/sign/';
         var data = {
           workshopId: parseInt(newWorkshop.get('id'))
         };
@@ -151,13 +151,13 @@ export default Ember.Controller.extend({
   },
 
   firstDaySelectedWorkshops: function () {
-    return this.get('selectedWorkshops').filter(function(workshop){
+    return this.get('selectedWorkshops').filter(function (workshop) {
       return workshop.get('day') === 'FIRST';
     });
   }.property('selectedWorkshops'),
 
   secondDaySelectedWorkshops: function () {
-    return this.get('selectedWorkshops').filter(function(workshop){
+    return this.get('selectedWorkshops').filter(function (workshop) {
       return workshop.get('day') === 'SECOND';
     });
   }.property('selectedWorkshops')
