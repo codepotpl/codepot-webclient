@@ -385,8 +385,11 @@ section#agenda {
     margin-bottom: 0.5rem;
     background-color: #E6F4EE;
     box-shadow: 1px 1px darken(#E6F4EE, 20%);
-
     text-align: left;
+
+    &.selected {
+      background-color: #C2ECDA;
+    }
 
     h1, span {
       color: #000;

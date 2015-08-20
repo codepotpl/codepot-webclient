@@ -24,8 +24,14 @@ export default Ember.Controller.extend({
     var url = '/api/users/' + userId + '/workshops/';
     cdptRequest(url, 'GET')
       .then(function (result) {
+        controller.get('workshops').forEach(function(workshop){
+          workshop.set('isSelected', false);
+        });
         var workshops = result.workshops.map(function (rawWorkshop) {
           return controller.store.getById('workshop', rawWorkshop.id);
+        });
+        workshops.forEach(function(workshop){
+          workshop.set('isSelected', true);
         });
         controller.set('selectedWorkshops', workshops);
       })

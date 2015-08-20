@@ -5,15 +5,6 @@ export default Ember.Controller.extend({
 
   canSelectWorkshopsBinding: 'controllers.agenda.canSelectWorkshops',
 
-  isThisWorkshopAlreadySelected: function () {
-    var thisWorkshop = this.get('model');
-    return this.get('controllers.agenda.selectedWorkshops')
-        .filter(function (workshop) {
-          return thisWorkshop.get('id') === workshop.get('id');
-        })
-        .length > 0;
-  }.property('controllers.agenda.selectedWorkshops'),
-
   isThisWorkshopCollidingWithLunch: function () {
     var thisWorkshop = this.get('model');
     var inLunchSlot = false;

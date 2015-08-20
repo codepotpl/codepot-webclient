@@ -13,7 +13,7 @@
         <ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3">
             {{#each workshop in workshops}}
                 <li>
-                    <button class="workshop" {{action 'showWorkshopDetails' workshop}}>
+                    <button {{bind-attr class=':workshop workshop.isSelected:selected'}} {{action 'showWorkshopDetails' workshop}}>
                         {{#each mentor in workshop.mentors}}
                             <span {{bind-attr class=':mentor mentor.lastInList:no-comma'}}>{{mentor.firstName}} {{mentor.lastName}}</span>
                         {{/each}}
