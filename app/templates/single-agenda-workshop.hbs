@@ -17,11 +17,13 @@
             time slot before.
         </div>
     {{else}}
-        {{#if isThisWorkshopAlreadySelected}}
-            <button class="success" {{action 'leaveWorkshop' workshop}}>LEAVE THIS WORKSHOP</button>
-        {{else}}
-            <button class="success" {{action 'selectWorkshop' workshop}}>SELECT THIS WORKSHOP</button>
-        {{/if}}
+        <div class="button-wrapper">
+            {{#if isThisWorkshopAlreadySelected}}
+                <button class="alert" {{action 'leaveWorkshop' workshop}}>LEAVE THIS WORKSHOP</button>
+            {{else}}
+                <button class="success" {{action 'selectWorkshop' workshop}}>SELECT THIS WORKSHOP</button>
+            {{/if}}
+        </div>
     {{/if}}
 
     {{/if}}

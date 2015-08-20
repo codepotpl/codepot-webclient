@@ -24,6 +24,7 @@ $header-font-weight: normal;
 $header-font-style: normal;
 
 $success-color: $codepot-green;
+$alert-color: #F36852;
 
 @import "normalize";
 @import "flexbox";
@@ -257,7 +258,7 @@ section#agenda {
     h3 {
       font-size: 1rem;
     }
-      font-size: 0.8rem;
+    font-size: 0.8rem;
   }
 
   .no-workshops-found {
@@ -445,9 +446,14 @@ section#agenda {
   .tags {
     margin-bottom: 0.5rem;
   }
-  button {
-    display: block;
-    margin-top: 1rem;
+  .button-wrapper {
+    text-align: center;
+    width: 100%;
+    button {
+      display: inline-block;
+      margin-top: 1rem;
+      margin-bottom: 0;
+    }
   }
 }
 
