@@ -74,7 +74,29 @@ export default Ember.Route.extend({
       })
       .finally(function () {
         showLoadingIndicator(false);
+        route.refreshWorkshopsAttendeesCount();
       });
+  },
+
+  refreshWorkshopsAttendeesCount: function () {
+    Ember.run.later(this, function() {
+      var route = this;
+      var url = '/api/workshops/places/';
+      cdptRequest(url, 'POST')
+        .then(function (result) {
+          result.places.forEach(function(placeObject){
+            var workshop = route.store.getById('workshop', placeObject.workshopId);
+            if (workshop) {
+              workshop.set('attendeesCount', placeObject.attendeesCount);
+              workshop.set('maxAttendees', placeObject.maxAttendees);
+              workshop.set('placesLeft', placeObject.maxAttendees - placeObject.attendeesCount);
+            }
+          });
+        })
+        .always(function () {
+          route.refreshWorkshopsAttendeesCount();
+        });
+    }, 5000);
   },
 
   actions: {
