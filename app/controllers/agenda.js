@@ -21,8 +21,8 @@ export default Ember.Controller.extend({
     showLoadingIndicator(true);
     var controller = this;
     var userId = this.get('controllers.application.userData').user.get('id');
-    var url = '/api/users/' + userId + '/workshops/';
-    cdptRequest(url, 'GET')
+    var url = '/api/users/' + userId + '/workshops/' + '?nocache=' + new Date().getTime();
+    cdptRequest(url, 'POST')
       .then(function (result) {
         controller.get('workshops').forEach(function(workshop){
           workshop.set('isSelected', false);
@@ -98,17 +98,17 @@ export default Ember.Controller.extend({
       showLoadingIndicator(true);
       var controller = this;
       var userId = this.get('controllers.application.userData').user.get('id');
-      var url = '/api/users/' + userId + '/workshops/';
+      var url = '/api/users/' + userId + '/workshops/sign/';
       var data = {
         workshopId: parseInt(workshop.get('id'))
       };
       cdptRequest(url, 'POST', data)
         .then(function () {
           $('.reveal-modal.open').foundation('reveal', 'close');
-          controller.refreshSelectedWorkshops();
         })
         .always(function () {
           showLoadingIndicator(false);
+          controller.refreshSelectedWorkshops();
         });
     },
 
@@ -120,10 +120,10 @@ export default Ember.Controller.extend({
       cdptRequest(url, 'DELETE')
         .then(function () {
           $('.reveal-modal.open').foundation('reveal', 'close');
-          controller.refreshSelectedWorkshops();
         })
         .always(function () {
           showLoadingIndicator(false);
+          controller.refreshSelectedWorkshops();
         });
     }
   },
@@ -142,10 +142,10 @@ export default Ember.Controller.extend({
         cdptRequest(url, 'POST', data)
           .then(function () {
             $('.reveal-modal.open').foundation('reveal', 'close');
-            controller.refreshSelectedWorkshops();
           })
           .always(function () {
             showLoadingIndicator(false);
+            controller.refreshSelectedWorkshops();
           });
       });
   },
