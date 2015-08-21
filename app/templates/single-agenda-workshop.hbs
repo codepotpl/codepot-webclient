@@ -20,7 +20,7 @@
                 {{#if workshop.isSelected}}
                     <button class="alert" {{action 'leaveWorkshop' workshop}}>LEAVE THIS WORKSHOP</button>
                 {{else}}
-                    <button class="success" {{action 'selectWorkshop' workshop}}>SELECT THIS WORKSHOP</button>
+                    <button class="success" {{bind-attr disabled='workshop.noPlacesLeft'}} {{action 'selectWorkshop' workshop}}>SELECT THIS WORKSHOP</button>
                 {{/if}}
             </div>
         {{/if}}

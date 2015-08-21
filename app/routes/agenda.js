@@ -89,7 +89,6 @@ export default Ember.Route.extend({
             if (workshop) {
               workshop.set('attendeesCount', placeObject.attendeesCount);
               workshop.set('maxAttendees', placeObject.maxAttendees);
-              workshop.set('placesLeft', placeObject.maxAttendees - placeObject.attendeesCount);
             }
           });
         })

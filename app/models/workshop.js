@@ -5,7 +5,14 @@ export default DS.Model.extend({
   timeSlots: DS.hasMany('time-slot'),
   attendeesCount: DS.attr('number'),
   maxAttendees: DS.attr('number'),
-  placesLeft: DS.attr('number'),
+
+  placesLeft: function() {
+    return this.get('maxAttendees') - this.get('attendeesCount');
+  }.property('attendeesCount', 'maxAttendees'),
+
+  noPlacesLeft: function() {
+    return !this.get('placesLeft');
+  }.property('placesLeft'),
 
   room: function () {
     var room;
