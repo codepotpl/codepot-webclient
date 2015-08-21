@@ -95,7 +95,7 @@ export default Ember.Route.extend({
         .always(function () {
           route.refreshWorkshopsAttendeesCount();
         });
-    }, 5000);
+    }, 10000);
   },
 
   actions: {
