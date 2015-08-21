@@ -56,6 +56,31 @@ export default Ember.Controller.extend({
     return workshops;
   },
 
+  cantModifyWorkshopBecauseOfBeingAMentorInThisTimeSlot: function () {
+    var myId = this.get('controllers.application.userData').user.get('id');
+    var myTimeSlots = [];
+    this.get('selectedWorkshops').forEach(function (workshop) {
+      workshop.get('mentors').forEach(function (mentor) {
+        if (mentor.get('id') === myId) {
+          myTimeSlots.pushObjects(workshop.get('timeSlots').map(function (timeSlot) {
+            return timeSlot;
+          }));
+        }
+      });
+    });
+
+    this.get('workshops')
+      .forEach(function (workshop) {
+        workshop.get('timeSlots').forEach(function (workshopTimeSlot) {
+          myTimeSlots.forEach(function (myTimeSlot) {
+            if (workshopTimeSlot.get('day') === myTimeSlot.get('day') && workshopTimeSlot.get('order') === myTimeSlot.get('order')) {
+              workshop.set('cantModifyWorkshopBecauseOfBeingAMentorInThisTimeSlot', true);
+            }
+          });
+        });
+      });
+  }.observes('workshops', 'selectedWorkshops'),
+
   noWorkshopsFoundDay1: function () {
     return !this.filterWorkshopsByDay('FIRST').length;
   }.property('workshops'),
