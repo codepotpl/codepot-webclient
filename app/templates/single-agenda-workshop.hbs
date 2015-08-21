@@ -9,6 +9,8 @@
 
     <span class="room">room: {{workshop.room}} ({{workshop.startTimeDay}} {{workshop.startTimeHour}}-{{workshop.endTimeHour}})</span>
 
+    <span class="room">free seats: {{workshop.placesLeft}} ({{workshop.maxAttendees}} total)</span>
+
     {{#unless workshop.cantModifyWorkshopBecauseOfBeingAMentorInThisTimeSlot}}
         {{#if canSelectWorkshops}}
             {{#if isThisWorkshopCollidingWithLunch}}
