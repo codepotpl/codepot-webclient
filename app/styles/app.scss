@@ -396,12 +396,12 @@ section#agenda {
     width: 100%;
     padding: 0.5rem 0.5rem 0.3rem;
     margin-bottom: 0.5rem;
-    background-color: #E6F4EE;
+    background-color: #EDEDED;
     box-shadow: 1px 1px darken(#E6F4EE, 20%);
     text-align: left;
 
     &.selected {
-      background-color: #C2ECDA;
+      background-color: #CBEFDC;
     }
 
     h1, span {
