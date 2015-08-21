@@ -14,7 +14,7 @@ export default Ember.Controller.extend({
   }.property('isSignedIn', 'purchaseComplete'),
 
   canSelectWorkshops: function () {
-    return this.get('isSignedIn') && this.get('purchaseComplete');
+    return this.get('isSignedIn') && this.get('purchaseComplete') && false;
   }.property('isSignedIn', 'purchaseComplete'),
 
   refreshSelectedWorkshops: function () {
