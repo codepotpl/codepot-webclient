@@ -52,10 +52,12 @@ module.exports = function(environment) {
     ENV.googleAnalytics = {
       webPropertyId: 'UA-60029641-4'
     };
+    ENV.FRONTPAGE_URL = 'https://codepot.pl/';
   } else {
     ENV.googleAnalytics = {
       webPropertyId: 'UA-60029641-3'
     };
+    ENV.FRONTPAGE_URL = 'https://codepot.pl:8443/';
   }
 
   console.info('Loading environment variables.');

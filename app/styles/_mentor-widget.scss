@@ -1,0 +1,56 @@
+@import "foundation/components/visibility";
+@import "flexbox";
+
+.mentor-widget {
+  a {
+    color: #2CB588;
+    text-decoration: none;
+  }
+
+  .top-row {
+    @extend %flexbox;
+    @include flex-direction(row);
+
+    img {
+      height: 5rem;
+      width: 5rem;
+      margin-right: 1rem;
+    }
+
+    h1, h2 {
+      margin: 0;
+      padding: 0;
+      line-height: 1.2;
+    }
+
+    h1 {
+      font-size: 1rem;
+      @media #{$medium-up} {
+        font-size: 1*1.25rem;
+      }
+    }
+    h2 {
+      font-size: 0.8rem;
+      @media #{$medium-up} {
+        font-size: 1rem;
+      }
+      flex-grow: 1;
+    }
+
+    .essential-info {
+      @extend %flexbox;
+      @include flex-direction(column);
+
+      .social-bar {
+        i {
+          font-size: 1.5rem;
+          margin-right: 0.5rem;
+        }
+      }
+    }
+  }
+  .bio {
+    font-size: 0.8rem;
+    line-height: 1.2;
+  }
+}

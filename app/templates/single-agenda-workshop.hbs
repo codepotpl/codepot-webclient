@@ -41,7 +41,7 @@
     <h2>Mentors:</h2>
 
     {{#each mentor in workshop.mentors}}
-        <span {{bind-attr class=':mentor mentor.lastInList:no-comma'}}>{{mentor.firstName}} {{mentor.lastName}}</span>
+        {{mentor-widget mentor=mentor}}
     {{/each}}
 
     <a class="close-reveal-modal" aria-label="Close">&#215;</a>

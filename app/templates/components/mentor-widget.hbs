@@ -1,0 +1,33 @@
+<div class="mentor-widget">
+    <div class="top-row">
+        <img {{bind-attr src=mentor.fullPictureURL}}/>
+
+        <div class="essential-info">
+            <h1>{{mentor.firstName}} {{mentor.lastName}}</h1>
+            <h2>{{mentor.tagline}}</h2>
+            <div class="social-bar">
+                {{#if mentor.websiteURL}}
+                    <a {{bind-attr href=mentor.websiteURL}} target="_blank"><i class="fa fa-link"></i></a>
+                {{/if}}
+                {{#if mentor.linkedinProfileURL}}
+                    <a {{bind-attr href=mentor.linkedinProfileURL}} target="_blank"><i class="fa fa-linkedin"></i></a>
+                {{/if}}
+                {{#if mentor.githubUsername}}
+                    <a {{bind-attr href=githubURL}} target="_blank"><i class="fa fa-github"></i></a>
+                {{/if}}
+                {{#if mentor.stackoverflowId}}
+                    <a {{bind-attr href=stackoverflowURL}} target="_blank"><i class="fa fa-stack-overflow"></i></a>
+                {{/if}}
+                {{#if mentor.twitterUsername}}
+                    <a {{bind-attr href=twitterURL}} target="_blank"><i class="fa fa-twitter"></i></a>
+                {{/if}}
+                {{#if mentor.googleplusHandler}}
+                    <a {{bind-attr href=googleplusURL}} target="_blank"><i class="fa fa-google-plus"></i></a>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+    <div class="bio">
+        {{markdown-to-html markdown=mentor.bioInMd}}
+    </div>
+</div>
