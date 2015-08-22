@@ -34,7 +34,7 @@
       @media #{$medium-up} {
         font-size: 1rem;
       }
-      flex-grow: 1;
+      @include flex-grow(1);
     }
 
     .essential-info {
