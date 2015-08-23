@@ -1,0 +1,27 @@
+<div class="workshops">
+    <div class="row">
+        <div class="small-12 columns">
+            <h1>My Workshops</h1>
+
+            {{#if workshops}}
+                {{#if day1Workshops}}
+                    <h2 class="center">Friday</h2>
+                    {{#each workshop in day1Workshops}}
+                        {{my-workshop-section workshop=workshop}}
+                    {{/each}}
+                {{/if}}
+
+                {{#if day2Workshops}}
+                    <h2 class="center">Saturday</h2>
+                    {{#each workshop in day2Workshops}}
+                        {{my-workshop-section workshop=workshop}}
+                    {{/each}}
+                {{/if}}
+            {{else}}
+                <div class="info">
+                    You have no selected workshops. Go to {{#link-to 'agenda'}}agenda{{/link-to}} to select them.
+                </div>
+            {{/if}}
+        </div>
+    </div>
+</div>

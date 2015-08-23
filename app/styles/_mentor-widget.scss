@@ -2,11 +2,6 @@
 @import "flexbox";
 
 .mentor-widget {
-  a {
-    color: #2CB588;
-    text-decoration: none;
-  }
-
   .top-row {
     @extend %flexbox;
     @include flex-direction(row);

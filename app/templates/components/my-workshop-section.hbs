@@ -1,0 +1,24 @@
+<div class="workshop">
+    <h1>{{workshop.title}}</h1>
+
+    <div class="room">room: {{workshop.room}}, {{workshop.startTimeHour}}-{{workshop.endTimeHour}}</div>
+
+    <div class="tags">
+        {{#each tag in workshop.tags}}
+            <span class="tag">{{tag.name}}</span>
+        {{/each}}
+    </div>
+    <div class="description">
+        {{markdown-to-html markdown=workshop.description}}
+    </div>
+
+    <h2>Mentors:</h2>
+
+    <div class="row">
+        {{#each mentor in workshop.mentors}}
+            <div class="small-12 medium-6 columns">
+                {{mentor-widget mentor=mentor}}
+            </div>
+        {{/each}}
+    </div>
+</div>

@@ -4,14 +4,32 @@
 
         <p>Your payment has been processed and your ticket is here.</p>
 
-        <p>We will inform you about workshop registration date via e-mail and our social channels.</p>
+        <p>Below you can find more information:</p>
 
-        {{#link-to 'agenda'}}
-            <button class="success">SEE AGENDA</button>
-        {{/link-to}}
+        <div class="row">
+            <div class="columns">
+                {{#link-to 'agenda'}}
+                    <button class="success">SEE AGENDA</button>
+                {{/link-to}}
+            </div>
+        </div>
 
-        {{#link-to 'check-payment-status'}}
-            <button class="success small">My Payment Information</button>
-        {{/link-to}}
+        <div class="row">
+            <div class="columns">
+                {{#link-to 'workshops'}}
+                    <button class="success">MY WORKSHOPS</button>
+                {{/link-to}}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="columns">
+                {{#link-to 'check-payment-status'}}
+                    <button class="success">My Payment Information</button>
+                {{/link-to}}
+            </div>
+        </div>
+
+
     </div>
 </div>

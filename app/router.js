@@ -17,4 +17,7 @@ export default Router.map(function() {
   this.route('buy-a-ticket');
   this.route('check-payment-status');
   this.route('agenda');
+  this.route('workshops', function() {
+    this.route('details', {path: '/:id'});
+  });
 });

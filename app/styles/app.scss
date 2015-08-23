@@ -78,6 +78,11 @@ button {
   display: none;
 }
 
+a {
+  color: #2CB588;
+  text-decoration: none;
+}
+
 span.hint {
   display: block;
   font-size: 0.8rem;
@@ -477,6 +482,41 @@ section#agenda {
   }
 }
 
+.workshops {
+  h2.center {
+    display: block;
+    text-align: center;
+  }
+  .workshop {
+    background-color: #F7F7F7;
+    @include transition(all 0.4s ease-out);
+    &:hover {
+      background-color: #DAFBF0;
+    }
+    padding: 0.5rem;
+    margin-bottom: 2rem;
+    h1 {
+      margin: 0;
+    }
+    h2 {
+      margin-bottom: 0.5rem;
+    }
+    .room {
+      margin-bottom: 0.5rem;
+    }
+    .tags {
+      margin-bottom: 0.5rem;
+    }
+    .description {
+      line-height: 1.2;
+      max-width: rem-calc(700);
+      p {
+        margin-top: 0;
+      }
+    }
+  }
+}
+
 footer {
   margin: 2rem 0 1rem 0;
   @media #{$small-only} {
@@ -491,3 +531,4 @@ footer {
     margin-bottom: 3px;
   }
 }
+
