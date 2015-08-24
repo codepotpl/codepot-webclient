@@ -482,36 +482,94 @@ section#agenda {
   }
 }
 
+.single-workshop {
+  padding: 0.5rem;
+  margin-bottom: 2rem;
+  h1 {
+    margin: 0;
+  }
+  h2 {
+    margin-bottom: 0.5rem;
+  }
+  .room {
+    margin-bottom: 0.5rem;
+  }
+  .tags {
+    margin-bottom: 0.5rem;
+  }
+  .description {
+    line-height: 1.2;
+    max-width: rem-calc(700);
+    p {
+      margin-top: 0;
+    }
+  }
+}
+
 .workshops {
   h2.center {
     display: block;
     text-align: center;
   }
+
+  a .workshop {
+    color: black;
+  }
+
   .workshop {
+    @extend .single-workshop;
     background-color: #F7F7F7;
     @include transition(all 0.4s ease-out);
     &:hover {
       background-color: #DAFBF0;
     }
+  }
+}
+
+.workshop-details {
+  .workshop {
+    @extend .single-workshop;
+    margin-top: 1rem;
+    margin-bottom: 0;
+    padding: 0;
+  }
+
+  .message {
     padding: 0.5rem;
-    margin-bottom: 2rem;
-    h1 {
-      margin: 0;
+    margin-bottom: 1rem;
+    background-color: #F7F7F7;
+
+    .metadata-row {
+      @extend %flexbox;
+      @include align-items(baseline);
+
+      span.author {
+        font-size: 1.25rem;
+        @include flex-grow(1);
+      }
+      span.time {
+        font-size: 0.8rem;
+      }
     }
-    h2 {
-      margin-bottom: 0.5rem;
-    }
-    .room {
-      margin-bottom: 0.5rem;
-    }
-    .tags {
-      margin-bottom: 0.5rem;
-    }
-    .description {
+
+    .content {
       line-height: 1.2;
-      max-width: rem-calc(700);
-      p {
-        margin-top: 0;
+      p:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  form {
+    textarea {
+      font-family: 'Lucida Console', Monaco, monospace;
+      min-height: rem-calc(250);
+    }
+
+    button {
+      float: right;
+      @media #{$small-only} {
+        width: 100%;
       }
     }
   }

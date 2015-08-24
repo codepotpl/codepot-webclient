@@ -1,0 +1,46 @@
+<div class="workshop-details">
+    <div class="row">
+        <div class="small-12 columns">
+            {{my-workshop-section workshop=workshop}}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="small-12 columns">
+            <h2>Messages:</h2>
+
+            {{#unless messages}}
+                <div class="info">
+                    No messages for this workshop. Use form below to write your message.
+                </div>
+            {{/unless}}
+
+            {{#each message in messages}}
+                <div class="message">
+                    <div class="metadata-row">
+                        <span class="author">{{message.author}}</span>
+                        <span class="time">{{moment message.created 'dddd HH:mm'}}</span>
+                    </div>
+
+                    <div class="content">
+                        {{markdown-to-html markdown=message.content}}
+                    </div>
+                </div>
+            {{/each}}
+
+            <form {{action 'sendNewMessage' newMessage on='submit'}}>
+                <div class="row">
+                    <div class="small-12 medium-6 columns">
+                        <h3>Your message in Markdown</h3>
+                        {{textarea value=newMessage}}
+                    </div>
+                    <div class="small-12 medium-6 columns">
+                        <h3>Preview</h3>
+                        {{markdown-to-html markdown=newMessage}}
+                    </div>
+                </div>
+                <button class="success">SEND MESSAGE</button>
+            </form>
+        </div>
+    </div>
+</div>

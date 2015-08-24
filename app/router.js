@@ -18,6 +18,6 @@ export default Router.map(function() {
   this.route('check-payment-status');
   this.route('agenda');
   this.route('workshops', function() {
-    this.route('details', {path: '/:id'});
+    this.route('details', {path: '/:id/:title'});
   });
 });

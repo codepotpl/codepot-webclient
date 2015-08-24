@@ -38,8 +38,10 @@
   },
   "dependencies": {
     "bower": "^1.4.1",
+    "ember-browserify": "^1.0.5",
     "ember-cli-google-analytics": "^1.4.0",
     "ember-cli-sass": "^4.0.0-beta.6",
-    "node-sass": "^3.0.0"
+    "node-sass": "^3.0.0",
+    "slug": "^0.9.1"
   }
 }

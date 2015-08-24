@@ -7,14 +7,18 @@
                 {{#if day1Workshops}}
                     <h2 class="center">Friday</h2>
                     {{#each workshop in day1Workshops}}
-                        {{my-workshop-section workshop=workshop}}
+                        {{#link-to 'workshops.details' workshop.id workshop.sluggedTitle}}
+                            {{my-workshop-section workshop=workshop}}
+                        {{/link-to}}
                     {{/each}}
                 {{/if}}
 
                 {{#if day2Workshops}}
                     <h2 class="center">Saturday</h2>
                     {{#each workshop in day2Workshops}}
-                        {{my-workshop-section workshop=workshop}}
+                        {{#link-to 'workshops.details' workshop.id workshop.sluggedTitle}}
+                            {{my-workshop-section workshop=workshop}}
+                        {{/link-to}}
                     {{/each}}
                 {{/if}}
             {{else}}

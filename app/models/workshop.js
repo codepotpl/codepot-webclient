@@ -1,3 +1,5 @@
+import slug from 'npm:slug';
+
 export default DS.Model.extend({
   title: DS.attr('string'),
   description: DS.attr('string'),
@@ -5,6 +7,10 @@ export default DS.Model.extend({
   timeSlots: DS.hasMany('time-slot'),
   attendeesCount: DS.attr('number'),
   maxAttendees: DS.attr('number'),
+
+  sluggedTitle: function() {
+    return slug(this.get('title'));
+  }.property('title'),
 
   placesLeft: function() {
     return this.get('maxAttendees') - this.get('attendeesCount');
