@@ -14,12 +14,12 @@
 
     <h2>Mentors:</h2>
 
-    <div class="row">
+    <ul class="small-block-grid-1 medium-block-grid-2">
         {{#each mentor in workshop.mentors}}
-            <div class="small-12 medium-6 columns">
+            <li>
                 {{mentor-widget mentor=mentor}}
-            </div>
+            </li>
         {{/each}}
-    </div>
+    </ul>
 </div>
 
