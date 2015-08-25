@@ -7,6 +7,16 @@
 
     <div class="row">
         <div class="small-12 columns">
+            {{#if attendees}}
+                <h2>Attendees:</h2>
+
+                <div class="attendees">
+                    {{#each attendee in attendees}}
+                        <span>{{attendee.firstName}} {{attendee.lastName}} &lt;{{attendee.email}}&gt; </span>
+                    {{/each}}
+                </div>
+            {{/if}}
+
             <h2>Messages:</h2>
 
             {{#unless messages}}

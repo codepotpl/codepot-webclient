@@ -33,7 +33,14 @@ export default Ember.Route.extend(authenticatedRoute, {
           route.transitionTo('workshops.index');
           return;
         }
-        route.controller.set('workshop', route.store.getById('workshop', model.id));
+        route.controller.set('workshop', workshop);
+
+        if (workshop.get('mentors').filter(function (mentor) {
+            return mentor.get('id') == userId;
+          }).length > 0) {
+          route.loadAttendees();
+        }
+
         route.refreshMessages();
       })
       .always(function () {
@@ -41,14 +48,26 @@ export default Ember.Route.extend(authenticatedRoute, {
       });
   },
 
-  refreshMessages: function() {
+  refreshMessages: function () {
     var route = this;
     var workshopId = this.controller.get('workshop.id');
     var url = '/api/workshops/' + workshopId + '/messages/';
     cdptRequest(url, 'GET')
-      .then(function(response) {
-        console.log(response);
+      .then(function (response) {
         route.controller.set('messages', response.messages)
+      })
+      .always(function () {
+        showLoadingIndicator(false);
+      });
+  },
+
+  loadAttendees:function() {
+    var route = this;
+    var workshopId = this.controller.get('workshop.id');
+    var url = '/api/workshops/' + workshopId + '/attendees/';
+    cdptRequest(url, 'GET')
+      .then(function (response) {
+        route.controller.set('attendees', response.attendees);
       })
       .always(function () {
         showLoadingIndicator(false);
@@ -64,13 +83,16 @@ export default Ember.Route.extend(authenticatedRoute, {
         content: message
       };
       cdptRequest(url, 'POST', data)
-        .then(function() {
+        .then(function () {
           route.controller.set('newMessage', '');
           route.refreshMessages();
         })
         .always(function () {
           showLoadingIndicator(false);
         });
+    },
+    willTransition: function() {
+      this.controller.set('attendees', []);
     }
   }
 });
