@@ -28,7 +28,7 @@
             {{#each message in messages}}
                 <div class="message">
                     <div class="metadata-row">
-                        <span class="author">{{message.author}}</span>
+                        <span class="author">{{message.author.firstName}} {{message.author.lastName}}</span>
                         <span class="time">{{moment message.created 'dddd HH:mm'}}</span>
                     </div>
 
