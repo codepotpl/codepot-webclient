@@ -57,6 +57,9 @@ export default Ember.Controller.extend({
   },
 
   cantModifyWorkshopBecauseOfBeingAMentorInThisTimeSlot: function () {
+    if (!this.get('controllers.application.userData') || !this.get('controllers.application.userData').user || !this.get('controllers.application.userData').user.get('id')) {
+      return;
+    }
     var myId = this.get('controllers.application.userData').user.get('id');
     var myTimeSlots = [];
     this.get('selectedWorkshops').forEach(function (workshop) {
