@@ -17,40 +17,42 @@
                 </div>
             {{/if}}
 
-            <h2>Messages:</h2>
+            {{#if hasAccessToThisWorkshop}}
+                <h2>Messages:</h2>
 
-            {{#unless messages}}
-                <div class="info">
-                    No messages for this workshop. Use form below to write your message.
-                </div>
-            {{/unless}}
+                {{#unless messages}}
+                    <div class="info">
+                        No messages for this workshop. Use form below to write your message.
+                    </div>
+                {{/unless}}
 
-            {{#each message in messages}}
-                <div class="message">
-                    <div class="metadata-row">
-                        <span class="author">{{message.author.firstName}} {{message.author.lastName}}</span>
-                        <span class="time">{{moment message.created 'dddd HH:mm'}}</span>
-                    </div>
+                {{#each message in messages}}
+                    <div class="message">
+                        <div class="metadata-row">
+                            <span class="author">{{message.author.firstName}} {{message.author.lastName}}</span>
+                            <span class="time">{{moment message.created 'dddd HH:mm'}}</span>
+                        </div>
 
-                    <div class="content">
-                        {{markdown-to-html markdown=message.content}}
+                        <div class="content">
+                            {{markdown-to-html markdown=message.content}}
+                        </div>
                     </div>
-                </div>
-            {{/each}}
+                {{/each}}
 
-            <form {{action 'sendNewMessage' newMessage on='submit'}}>
-                <div class="row">
-                    <div class="small-12 medium-6 columns">
-                        <h3>Your message in Markdown</h3>
-                        {{textarea value=newMessage}}
+                <form {{action 'sendNewMessage' newMessage on='submit'}}>
+                    <div class="row">
+                        <div class="small-12 medium-6 columns">
+                            <h3>Your message in Markdown</h3>
+                            {{textarea value=newMessage}}
+                        </div>
+                        <div class="small-12 medium-6 columns">
+                            <h3>Preview</h3>
+                            {{markdown-to-html markdown=newMessage}}
+                        </div>
                     </div>
-                    <div class="small-12 medium-6 columns">
-                        <h3>Preview</h3>
-                        {{markdown-to-html markdown=newMessage}}
-                    </div>
-                </div>
-                <button class="success">SEND MESSAGE</button>
-            </form>
+                    <button class="success">SEND MESSAGE</button>
+                </form>
+            {{/if}}
         </div>
     </div>
 </div>
