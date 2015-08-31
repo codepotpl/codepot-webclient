@@ -30,7 +30,7 @@ export default Ember.Component.extend({
     var component = this;
     Ember.$
       .ajax({
-        url: 'http://codepot.tk:8081/feedback',
+        url: 'http://survey.codepot.tk:8080/feedback',
         type: 'POST',
         data: JSON.stringify(data),
         contentType: 'application/json',
