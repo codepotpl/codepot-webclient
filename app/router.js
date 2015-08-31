@@ -20,4 +20,5 @@ export default Router.map(function() {
   this.route('workshops', function() {
     this.route('details', {path: '/:id/:title'});
   });
+  this.route('feedback');
 });

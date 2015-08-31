@@ -1,0 +1,16 @@
+<div {{bind-attr class=':feedback alreadySent:sent'}}>
+    <div class="overlay hidden"></div>
+    <h2>{{question}}</h2>
+
+    <div class="star-row">
+        <button {{action 'rate' 1}}><i {{bind-attr class=':fa star1highlighted:fa-star:fa-star-o'}}></i></button>
+        <button {{action 'rate' 2}}><i {{bind-attr class=':fa star2highlighted:fa-star:fa-star-o'}}></i></button>
+        <button {{action 'rate' 3}}><i {{bind-attr class=':fa star3highlighted:fa-star:fa-star-o'}}></i></button>
+        <button {{action 'rate' 4}}><i {{bind-attr class=':fa star4highlighted:fa-star:fa-star-o'}}></i></button>
+        <button {{action 'rate' 5}}><i {{bind-attr class=':fa star5highlighted:fa-star:fa-star-o'}}></i></button>
+    </div>
+
+    {{textarea value=comment placeholder='Optional comment.' focus-out='textareaFocusOut'}}
+
+    <span>Response sent. Thank you!</span>
+</div>

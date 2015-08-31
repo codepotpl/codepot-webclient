@@ -1,0 +1,26 @@
+{{#each workshop in workshops}}
+    {{workshop.title}}
+{{/each}}
+
+
+<div class="row">
+    <div class="small-12 medium-8 medium-centered large-6 large-centered columns">
+        {{input-rating-widget question='Years Of Your Professional Experience:' placeholder='Years of experience (e.g. 0, 1, 5, ...).' questionId='experience' userId=userId userToken=userToken}}
+
+        {{star-rating-with-comment-widget question='Venue Rating:' questionId='swps_rating' userId=userId userToken=userToken}}
+
+        {{star-rating-with-comment-widget question='Afterparty Rating:' questionId='afterparty_rating' userId=userId userToken=userToken}}
+
+        {{star-rating-with-comment-widget question='Lunch Rating:' questionId='lunch_rating' userId=userId userToken=userToken}}
+
+        {{star-rating-with-comment-widget question='Huntly Game Rating:' questionId='huntly_rating' userId=userId userToken=userToken}}
+
+        {{star-rating-with-comment-widget question='Registration System Rating:' questionId='registration_rating' userId=userId userToken=userToken}}
+
+        {{star-rating-with-comment-widget question='Overall Codepot Rating:' questionId='general_rating' userId=userId userToken=userToken}}
+
+        {{star-rating-with-comment-widget question='Internet Connection Rating:' questionId='internet_rating' userId=userId userToken=userToken}}
+    </div>
+</div>
+
+

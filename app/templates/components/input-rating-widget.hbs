@@ -1,0 +1,8 @@
+<div {{bind-attr class=':feedback alreadySent:sent'}}>
+    <div class="overlay hidden"></div>
+    <h2>{{question}}</h2>
+
+    {{input value=value placeholder=placeholder focus-out='inputFocusOut'}}
+
+    <span>Response sent. Thank you!</span>
+</div>

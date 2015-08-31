@@ -597,3 +597,71 @@ footer {
   }
 }
 
+.feedback {
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  background-color: #F7F7F7;
+  position: relative;
+  @include transition(background 0.4s ease-out);
+  span {
+    @include transition(opacity 0.4s ease-out);
+    opacity: 0;
+    display: block;
+    text-align: center;
+    margin-top: 0.3rem;
+    font-size: 0.64rem;
+  }
+
+  &.sent {
+    background-color: #DAFBF0;
+    span {
+      opacity: 1;
+    }
+  }
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    background-color: rgba(255, 255, 255, 0.6);
+
+    transition: opacity .7s ease-in-out;
+    -moz-transition: opacity .7s ease-in-out;
+    -webkit-transition: opacity .7s ease-in-out;
+    opacity: 1;
+    &.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+
+  h2 {
+    line-height: 1;
+    font-size: 1.25rem;
+    margin: 0 0 0.5rem;
+  }
+  .star-row {
+    @extend %flexbox;
+    @include justify-content(center);
+    margin-bottom: 0.5rem;
+    button {
+      background: none;
+      color: $codepot-green;
+      padding: 0 0.5rem;
+      font-size: 2rem;
+      margin: 0 0.1rem
+    }
+  }
+  textarea {
+    margin: 0;
+    font-size: 0.8rem;
+    height: 1.6rem;
+  }
+  input {
+    margin-top: 1rem;
+    margin-bottom: 0;
+  }
+}
