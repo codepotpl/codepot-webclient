@@ -8,6 +8,16 @@
 
         <p>Please take a second and fill the form below. With your opinion we can make Codepot better.</p>
 
+        {{#if parsedWorkshops}}
+            {{#each workshop in parsedWorkshops}}
+                {{star-rating-with-comment-widget question=workshop.title questionId='workshop_rating' userId=userId userToken=userToken workshopId=workshop.id}}
+
+                {{#each mentor in workshop.mentors}}
+                    {{star-rating-with-comment-widget question=mentor.name questionId='mentor_rating' userId=userId userToken=userToken mentorId=mentor.id}}
+                {{/each}}
+            {{/each}}
+        {{/if}}
+
         {{#if isMentor}}
             {{star-rating-with-comment-widget question='Workshop Equipment Rating:' questionId='mentor_room_opinion' userId=userId userToken=userToken}}
 

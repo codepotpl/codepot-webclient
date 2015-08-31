@@ -3,12 +3,26 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
   needs: ['application'],
 
-  userId: function() {
+  userId: function () {
     return this.get('controllers.application.userData').user.get('id');
   }.property('controllers.application.userData'),
 
-  userToken: function() {
+  userToken: function () {
     return this.get('controllers.application.userData').token;
   }.property('controllers.application.userData'),
 
+  parsedWorkshops: function () {
+    return this.get('workshops').map(function (workshop) {
+      return {
+        title: workshop.get('title'),
+        id: workshop.get('id'),
+        mentors: workshop.get('mentors').map(function (mentor) {
+          return {
+            name: mentor.get('firstName') + ' ' + mentor.get('lastName'),
+            id: mentor.get('id')
+          }
+        })
+      }
+    });
+  }.property('workshops')
 });
