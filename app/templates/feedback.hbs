@@ -2,9 +2,18 @@
     {{workshop.title}}
 {{/each}}
 
-
 <div class="row">
     <div class="small-12 medium-8 medium-centered large-6 large-centered columns">
+        <h1>You Feedback Is Important!</h1>
+
+        <p>Please take a second and fill the form below. With your opinion we can make Codepot better.</p>
+
+        {{#if isMentor}}
+            {{star-rating-with-comment-widget question='Workshop Equipment Rating:' questionId='mentor_room_opinion' userId=userId userToken=userToken}}
+
+            {{star-rating-with-comment-widget question='Organizers/Volunteers Support Rating:' questionId='mentor_orginizers_support_opinion' userId=userId userToken=userToken}}
+        {{/if}}
+
         {{input-rating-widget question='Years Of Your Professional Experience:' placeholder='Years of experience (e.g. 0, 1, 5, ...).' questionId='experience' userId=userId userToken=userToken}}
 
         {{star-rating-with-comment-widget question='Venue Rating:' questionId='swps_rating' userId=userId userToken=userToken}}

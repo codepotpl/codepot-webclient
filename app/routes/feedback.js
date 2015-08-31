@@ -8,6 +8,7 @@ export default Ember.Route.extend(authenticatedRoute, {
   setupController: function (controller) {
     showLoadingIndicator(true);
 
+    var isMentor = false;
     var userId = this.controller.get('controllers.application.userData').user.get('id');
     var url = '/api/users/' + userId + '/workshops/';
     cdptRequest(url, 'POST')
@@ -24,9 +25,23 @@ export default Ember.Route.extend(authenticatedRoute, {
           var workshop = upsert(controller.store, 'workshop', rawWorkshop);
           workshop.get('timeSlots').pushObjects(timeSlots);
           workshop.get('mentors').pushObjects(mentors);
+
+          workshop.set('isMentor', false);
+          workshop.get('mentors').forEach(function (mentor) {
+            if (mentor.get('id') == userId) {
+              isMentor = true;
+              workshop.set('isMentor', true);
+            }
+          });
           return workshop;
         });
+
+        workshops = workshops.filter(function (workshop) {
+          return !workshop.get('isMentor');
+        });
+
         controller.set('workshops', workshops);
+        controller.set('isMentor', isMentor);
       })
       .always(function () {
         showLoadingIndicator(false);
