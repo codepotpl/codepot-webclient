@@ -30,6 +30,8 @@ export default Ember.Component.extend({
     console.log(this.get('userId'));
     console.log(this.get('userToken'));
     console.log(this.get('comment'));
+    console.log(this.get('workshopId'));
+    console.log(this.get('mentorId'));
 
 
     this.set('alreadySent', false);
