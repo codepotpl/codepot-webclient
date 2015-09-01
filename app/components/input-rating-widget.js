@@ -13,7 +13,7 @@ export default Ember.Component.extend({
         userId: this.get('userId'),
         userToken: this.get('userToken')
       },
-      answer: this.get('value'),
+      answer: this.get('value') || ' ',
       comment: this.get('comment'),
       workshopId: this.get('workshopId'),
       mentorId: this.get('mentorId')
