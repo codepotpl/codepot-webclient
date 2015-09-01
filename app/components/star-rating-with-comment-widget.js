@@ -28,14 +28,6 @@ export default Ember.Component.extend({
     this.set('alreadySent', false);
     this.$('.overlay').removeClass('hidden');
 
-    console.log(this.get('rating'));
-    console.log(this.get('questionId'));
-    console.log(this.get('userId'));
-    console.log(this.get('userToken'));
-    console.log(this.get('comment'));
-    console.log(this.get('workshopId'));
-    console.log(this.get('mentorId'));
-
     var data = {
       feedbackId: {
         questionId: this.get('questionId'),
